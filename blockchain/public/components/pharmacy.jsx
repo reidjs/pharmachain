@@ -62,8 +62,6 @@ class Pharmacy extends React.Component {
     });
 
     return (
-      <div>
-
       <div className="pharm-list">
 
 

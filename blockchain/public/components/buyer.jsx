@@ -26,6 +26,7 @@ class Buyer extends React.Component {
         <PharmacyContainer />
         <InventoryAI/>
       </div>
+    </div>
     );
   }
 }
