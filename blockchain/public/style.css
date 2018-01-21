@@ -78,7 +78,7 @@ input[type=number] {
   border: 1px solid #DDDDDD;
   background: yellow;
 }
- 
+
 input[type=number]:focus {
   box-shadow: 0 0 5px rgba(81, 203, 238, 1);
   padding: 3px 0px 3px 3px;
@@ -164,3 +164,8 @@ div#key-input > input {
   margin-right: 20px;
 }
 
+.drag-to-this-box {
+  height: 50px;
+  width: 10%;
+  border: 1px solid black;
+}

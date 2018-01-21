@@ -5,13 +5,35 @@ class InventoryAI extends React.Component {
     super(props);
   }
 
+  dragstart_handler(ev) {
+    // Set the drag effect to copy
+    ev.dataTransfer.dropEffect = "copy";
+  }
+
+  dragover_handler(e) {
+     // Add the target element's id to the data transfer object
+     e.preventDefault();
+     e.dataTransfer.dropEffect = "move";
+   }
+
+   drop_handler(e) {
+     e.preventDefault();
+     let data = e.dataTransfer.getData("text");
+     e.target.appendChild(document.getElementById(data));
+   }
+
   render() {
     return (
       <div>
         <p id="p1" draggable="true"
-                   ondragstart="dragstart_handler(event);">
+                   onDragStart={this.dragstart_handler}>
         <img src="../../assets/csv-img.svg" width="5%"></img>
         </p>
+
+        <div onDrop={this.drop_handler}
+             onDragOver={this.dragover_handler}
+             className="drag-to-this-box">
+        </div>
 
       </div>
     );

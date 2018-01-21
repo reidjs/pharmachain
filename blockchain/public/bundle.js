@@ -18771,6 +18771,26 @@ var InventoryAI = function (_React$Component) {
   }
 
   _createClass(InventoryAI, [{
+    key: "dragstart_handler",
+    value: function dragstart_handler(ev) {
+      // Set the drag effect to copy
+      ev.dataTransfer.dropEffect = "copy";
+    }
+  }, {
+    key: "dragover_handler",
+    value: function dragover_handler(e) {
+      // Add the target element's id to the data transfer object
+      e.preventDefault();
+      e.dataTransfer.dropEffect = "move";
+    }
+  }, {
+    key: "drop_handler",
+    value: function drop_handler(e) {
+      e.preventDefault();
+      var data = e.dataTransfer.getData("text");
+      e.target.appendChild(document.getElementById(data));
+    }
+  }, {
     key: "render",
     value: function render() {
       return _react2.default.createElement(
@@ -18779,9 +18799,12 @@ var InventoryAI = function (_React$Component) {
         _react2.default.createElement(
           "p",
           { id: "p1", draggable: "true",
-            ondragstart: "dragstart_handler(event);" },
+            onDragStart: this.dragstart_handler },
           _react2.default.createElement("img", { src: "../../assets/csv-img.svg", width: "5%" })
-        )
+        ),
+        _react2.default.createElement("div", { onDrop: this.drop_handler,
+          onDragOver: this.dragover_handler,
+          className: "drag-to-this-box" })
       );
     }
   }]);
