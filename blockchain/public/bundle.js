@@ -18513,7 +18513,7 @@ var Pharmacy = function (_React$Component) {
         buttonText = "Cancel Order";
       }
       var listItems = this.props.invarray.map(function (product) {
-        return _react2.default.createElement(_pharmacy_item2.default, { product: product, buyAmount: _this2.state.inventory[product.name].buyAmount, updateValue: _this2.updateValue });
+        return _react2.default.createElement(_pharmacy_item2.default, { path: _this2.props.location.pathname, product: product, buyAmount: _this2.state.inventory[product.name].buyAmount, updateValue: _this2.updateValue });
       });
 
       return _react2.default.createElement(
@@ -50252,10 +50252,15 @@ var _react2 = _interopRequireDefault(_react);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var PharmacyItem = function PharmacyItem(_ref) {
-  var product = _ref.product,
+  var path = _ref.path,
+      product = _ref.product,
       buyAmount = _ref.buyAmount,
       updateValue = _ref.updateValue;
 
+  var onBuyerPage = false;
+  if (path === "/pharmacy") onBuyerPage = true;
+  var showValue = void 0;
+  onBuyerPage ? showValue = product.amount : showValue = product.buyAmount;
   return _react2.default.createElement(
     "li",
     { className: "product-card" },
@@ -50268,9 +50273,9 @@ var PharmacyItem = function PharmacyItem(_ref) {
     _react2.default.createElement(
       "h2",
       null,
-      product.amount
+      showValue
     ),
-    _react2.default.createElement("input", { type: "number", value: buyAmount, onChange: function onChange(e) {
+    onBuyerPage && _react2.default.createElement("input", { type: "number", value: buyAmount, onChange: function onChange(e) {
         updateValue(product.name, e.target.value);
       } })
   );

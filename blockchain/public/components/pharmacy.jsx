@@ -56,7 +56,7 @@ class Pharmacy extends React.Component {
     }
     const listItems = this.props.invarray.map((product) => {
       return (
-        <PharmacyItem product={product} buyAmount={this.state.inventory[product.name].buyAmount} updateValue={this.updateValue} />
+        <PharmacyItem path={this.props.location.pathname} product={product} buyAmount={this.state.inventory[product.name].buyAmount} updateValue={this.updateValue} />
       );
     });
 
