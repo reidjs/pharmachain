@@ -9,7 +9,7 @@ Pharma Chain makes relations between health-manufacturers and health-care-provid
 
 # Implementation details
 
-### <a name="rnn"></a>Recursive Neural Network to Predict Future Inventory
+### <a name="rnn"></a>Intuitive UI 
 
 ### <a name="blockchain"></a>Smart Contracts on the Ethereum Blockchain Ledger for Contract Management between Manufacturer and Hospital.
 
