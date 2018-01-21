@@ -4,7 +4,6 @@ import merge from 'lodash/merge';
 import PharmacyItem from './pharmacy_item';
 import RaisedButton from 'material-ui/RaisedButton';
 
-import InventoryAI from "./inventory_ai/inventory"
 
 class Pharmacy extends React.Component {
   constructor(props) {
@@ -75,7 +74,7 @@ class Pharmacy extends React.Component {
           <div></div>
         )}
 
-        <InventoryAI/>
+
 
       </div>
     );

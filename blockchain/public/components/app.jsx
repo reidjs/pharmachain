@@ -6,19 +6,19 @@ import {
   Link,
   HashRouter
 } from 'react-router-dom';
-import { 
-  AuthRoute, 
-  ProtectedRoute 
+import {
+  AuthRoute,
+  ProtectedRoute
 } from './route_util';
 import PharmacyContainer from './pharmacy_container';
 import TopNav from './top_nav';
 import Splash from './splash';
 import BuyerContainer from './buyer_container';
 import SellerContainer from './seller_container';
-//Turn routes to authroutes 
+//Turn routes to authroutes
 const App = () => {
   return (
-    <div> 
+    <div>
       <Route exact path="/pharmacy" render={() => <TopNav route={"Pharmacy"}/>}/>
       <Route exact path="/manufacturer" render={() => <TopNav route={"Manufacturer"}/>}/>
       <div className="main">

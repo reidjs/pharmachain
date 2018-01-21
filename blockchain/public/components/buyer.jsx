@@ -1,6 +1,7 @@
 import React from 'react';
 import PharmacyContainer from './pharmacy_container';
 import RaisedButton from 'material-ui/RaisedButton';
+import InventoryAI from "./inventory_ai/inventory"
 
 class Buyer extends React.Component {
   constructor(props) {
@@ -11,8 +12,9 @@ class Buyer extends React.Component {
   render() {
     return (
       <div>
-        <h1>Inventory Management</h1>  
+        <h1>Inventory Management</h1>
         <PharmacyContainer />
+        <InventoryAI/>
       </div>
     );
   }

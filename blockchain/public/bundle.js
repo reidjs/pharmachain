@@ -18563,7 +18563,7 @@ var _seller_container2 = _interopRequireDefault(_seller_container);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-//Turn routes to authroutes 
+//Turn routes to authroutes
 var App = function App() {
   return _react2.default.createElement(
     'div',
@@ -18615,6 +18615,10 @@ var _RaisedButton = __webpack_require__(61);
 
 var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
 
+var _inventory = __webpack_require__(249);
+
+var _inventory2 = _interopRequireDefault(_inventory);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -18644,7 +18648,8 @@ var Buyer = function (_React$Component) {
           null,
           'Inventory Management'
         ),
-        _react2.default.createElement(_pharmacy_container2.default, null)
+        _react2.default.createElement(_pharmacy_container2.default, null),
+        _react2.default.createElement(_inventory2.default, null)
       );
     }
   }]);
@@ -18770,6 +18775,7 @@ var InventoryAI = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (InventoryAI.__proto__ || Object.getPrototypeOf(InventoryAI)).call(this, props));
 
     _this.restartCsvDrag = _this.restartCsvDrag.bind(_this);
+
     return _this;
   }
 
@@ -18780,9 +18786,9 @@ var InventoryAI = function (_React$Component) {
       item.innerHTML = "<img src='../../assets/csv-img.svg' width='5%''></img>";
 
       var dropBox = document.getElementsByClassName("drag-to-this-box")[0];
-      dropBox.innerHTML = "";
+      dropBox.innerHTML = '<span class="drag-here">Drag Here</span>';
 
-      var inventory = document.getElementsByClassName("inventory")[0];
+      var inventory = document.getElementsByClassName("drag-feature")[0];
       inventory.prepend(item);
     }
   }, {
@@ -18804,11 +18810,12 @@ var InventoryAI = function (_React$Component) {
       e.preventDefault();
       var item = document.getElementById("p1");
       item.innerHTML = "<img src='../../assets/gear-loading.svg' width='30%''></img>";
+      document.getElementsByClassName("drag-here")[0].classList.toggle('hidden');
       e.target.appendChild(item);
 
       setTimeout(function () {
         item.innerHTML = "<p>42 Items</p>";
-      }, 2000);
+      }, 1000);
     }
   }, {
     key: "render",
@@ -18817,14 +18824,26 @@ var InventoryAI = function (_React$Component) {
         "div",
         { className: "inventory" },
         _react2.default.createElement(
-          "p",
-          { id: "p1", draggable: "true",
-            onDragStart: this.dragstart_handler },
-          _react2.default.createElement("img", { src: "../../assets/csv-img.svg", width: "5%" })
+          "div",
+          { className: "drag-feature" },
+          _react2.default.createElement(
+            "p",
+            { id: "p1", draggable: "true",
+              onDragStart: this.dragstart_handler },
+            _react2.default.createElement("img", { src: "../../assets/csv-img.svg", width: "5%" })
+          ),
+          _react2.default.createElement(
+            "div",
+            { onDrop: this.drop_handler,
+              onDragOver: this.dragover_handler,
+              className: "drag-to-this-box" },
+            _react2.default.createElement(
+              "span",
+              { className: "drag-here" },
+              "Drag Here"
+            )
+          )
         ),
-        _react2.default.createElement("div", { onDrop: this.drop_handler,
-          onDragOver: this.dragover_handler,
-          className: "drag-to-this-box" }),
         _react2.default.createElement(
           "a",
           { onClick: this.restartCsvDrag,
@@ -18870,10 +18889,6 @@ var _pharmacy_item2 = _interopRequireDefault(_pharmacy_item);
 var _RaisedButton = __webpack_require__(61);
 
 var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
-
-var _inventory = __webpack_require__(249);
-
-var _inventory2 = _interopRequireDefault(_inventory);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -18968,8 +18983,7 @@ var Pharmacy = function (_React$Component) {
         this.state.total,
         this.props.location.pathname === "/pharmacy" ? _react2.default.createElement(_RaisedButton2.default, { onClick: function onClick() {
             _this2.props.order(_this2.state.inventory);
-          }, label: buttonText, secondary: this.props.orderPlaced }) : _react2.default.createElement('div', null),
-        _react2.default.createElement(_inventory2.default, null)
+          }, label: buttonText, secondary: this.props.orderPlaced }) : _react2.default.createElement('div', null)
       );
     }
   }]);

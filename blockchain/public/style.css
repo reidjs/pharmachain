@@ -164,10 +164,25 @@ div#key-input > input {
   margin-right: 20px;
 }
 
+.inventory {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.drag-feature {
+  display: flex;
+  justify-content: space-around;
+}
+
 .drag-to-this-box {
   height: 8em;
   width: 8em;
-  border: 1px solid black;
+  background: #f7f7f7;
   border-radius: 9px;
   box-shadow: 2px 5px 6px #888;
+}
+
+.hidden {
+  display: none;
 }
