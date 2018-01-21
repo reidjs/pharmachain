@@ -18431,6 +18431,10 @@ var _pharmacy_item = __webpack_require__(590);
 
 var _pharmacy_item2 = _interopRequireDefault(_pharmacy_item);
 
+var _RaisedButton = __webpack_require__(190);
+
+var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -18452,8 +18456,7 @@ var Pharmacy = function (_React$Component) {
     _this.calcSum = _this.calcSum.bind(_this);
     _this.state = { total: 0, inventory: _this.props.inventory };
     _this.user = _this.props.user;
-
-    // debugger
+    console.log(_this.props.location);
     return _this;
   }
 
@@ -18505,9 +18508,14 @@ var Pharmacy = function (_React$Component) {
     value: function render() {
       var _this2 = this;
 
+      var buttonText = "Place Order";
+      if (this.props.orderPlaced) {
+        buttonText = "Cancel Order";
+      }
       var listItems = this.props.invarray.map(function (product) {
         return _react2.default.createElement(_pharmacy_item2.default, { product: product, buyAmount: _this2.state.inventory[product.name].buyAmount, updateValue: _this2.updateValue });
       });
+
       return _react2.default.createElement(
         'div',
         null,
@@ -18517,7 +18525,10 @@ var Pharmacy = function (_React$Component) {
           listItems
         ),
         'total ',
-        this.state.total
+        this.state.total,
+        this.props.location.pathname === "/pharmacy" ? _react2.default.createElement(_RaisedButton2.default, { onClick: function onClick() {
+            _this2.props.order('hello');
+          }, label: buttonText, secondary: this.props.orderPlaced }) : _react2.default.createElement('div', null)
       );
     }
   }]);
@@ -18572,8 +18583,10 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
   //     amount: 10
   //   }
   // ];
+  var location = ownProps.location;
   return {
     user: user,
+    location: location,
     inventory: inventory,
     invarray: invarray
   };
@@ -50473,12 +50486,23 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var Splash = function Splash() {
   return _react2.default.createElement(
     'div',
-    null,
-    _react2.default.createElement('img', { src: '../assets/splash1.jpg' }),
+    { className: 'splash' },
+    _react2.default.createElement('img', { src: '../assets/background.png' }),
+    _react2.default.createElement('img', { src: '../assets/logo.svg' }),
     _react2.default.createElement(
-      _reactRouterDom.Link,
-      { to: '/pharmacy' },
-      _react2.default.createElement(_RaisedButton2.default, { label: 'Enter' })
+      'h2',
+      null,
+      'Predictive medical inventory platform powered by blockchain'
+    ),
+    _react2.default.createElement(
+      'div',
+      { id: 'key-input' },
+      _react2.default.createElement('input', { type: 'text', placeholder: 'Enter your public key' }),
+      _react2.default.createElement(
+        _reactRouterDom.Link,
+        { to: '/pharmacy' },
+        _react2.default.createElement(_RaisedButton2.default, { label: 'Enter' })
+      )
     )
   );
 };
@@ -50531,8 +50555,6 @@ var Buyer = function (_React$Component) {
   _createClass(Buyer, [{
     key: 'render',
     value: function render() {
-      var _this2 = this;
-
       var buttonText = "Place Order";
       if (this.props.orderPlaced) {
         buttonText = "Cancel Order";
@@ -50545,18 +50567,13 @@ var Buyer = function (_React$Component) {
           null,
           'Inventory Management'
         ),
-        _react2.default.createElement(_pharmacy_container2.default, null),
-        _react2.default.createElement(_RaisedButton2.default, { onClick: function onClick() {
-            _this2.props.order('hello');
-          }, label: buttonText, secondary: this.props.orderPlaced })
+        _react2.default.createElement(_pharmacy_container2.default, null)
       );
     }
   }]);
 
   return Buyer;
 }(_react2.default.Component);
-
-;
 
 exports.default = Buyer;
 

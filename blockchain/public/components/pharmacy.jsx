@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import merge from 'lodash/merge';
 import PharmacyItem from './pharmacy_item';
+import RaisedButton from 'material-ui/RaisedButton';
+
 class Pharmacy extends React.Component {
   constructor(props) {
     super(props);
@@ -11,8 +13,7 @@ class Pharmacy extends React.Component {
     this.calcSum = this.calcSum.bind(this);
     this.state = ({total: 0, inventory: this.props.inventory});
     this.user = this.props.user;
-
-    // debugger
+    console.log(this.props.location);
   }
   handleSubmit(e) {
     e.preventDefault();
@@ -49,11 +50,16 @@ class Pharmacy extends React.Component {
     // return result;
   }
   render() {
+    let buttonText = "Place Order";
+    if (this.props.orderPlaced) {
+      buttonText = "Cancel Order";
+    }
     const listItems = this.props.invarray.map((product) => {
       return (
         <PharmacyItem product={product} buyAmount={this.state.inventory[product.name].buyAmount} updateValue={this.updateValue} />
       );
     });
+
     return (
       <div>
         
@@ -61,6 +67,12 @@ class Pharmacy extends React.Component {
           {listItems}
         </ul>
         total {this.state.total}
+        {(this.props.location.pathname === "/pharmacy") ? (
+          <RaisedButton onClick={()=>{this.props.order('hello');}} label={buttonText} secondary={this.props.orderPlaced}/>
+        ) : (
+          <div></div>
+        )}
+        
       </div>
     );
   }

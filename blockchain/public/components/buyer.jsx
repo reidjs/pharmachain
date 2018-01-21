@@ -17,10 +17,9 @@ class Buyer extends React.Component {
       <div>
         <h1>Inventory Management</h1>  
         <PharmacyContainer />
-        <RaisedButton onClick={()=>{this.props.order('hello')}} label={buttonText} secondary={this.props.orderPlaced}/>
       </div>
     );
   }
-};
+}
 
 export default Buyer;

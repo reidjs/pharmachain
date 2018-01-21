@@ -22,8 +22,10 @@ const mapStateToProps = (state, ownProps) => {
   //     amount: 10
   //   }
   // ];
+  let location = ownProps.location;
   return {
     user,
+    location,
     inventory, 
     invarray
   };
