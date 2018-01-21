@@ -4645,8 +4645,11 @@ var RECEIVE_ORDER = exports.RECEIVE_ORDER = "RECEIVE_ORDER";
 var submitOrder = exports.submitOrder = function submitOrder(order) {
   // console.log('order')
   $.ajax({
-    method: 'GET',
-    url: "/postOrder"
+    method: 'POST',
+    url: "/payBack",
+    data: {
+      test: 0
+    }
   });
   return {
     type: RECEIVE_ORDER,
@@ -4659,8 +4662,11 @@ var submitOrder = exports.submitOrder = function submitOrder(order) {
 var confirmShipment = exports.confirmShipment = function confirmShipment(shipment) {
   // console.log('order');
   $.ajax({
-    method: 'GET',
-    url: "/postOrder"
+    method: 'POST',
+    url: "/payBack",
+    data: {
+      test: 0
+    }
   });
   return {
     type: RECEIVE_SHIPMENT_CONFIRMATION,

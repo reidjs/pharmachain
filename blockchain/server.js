@@ -50,35 +50,35 @@ app.get('/getLoans', function(req,res) {
   res.send(unpayedLoans);
 });
 
-app.get('/borrow', function(req, res) {
-  var address = req.query.address;
+app.post('/borrowMoney', function(req, res) {
+  var address = '0xda06ccee4d31a1ec671d4e467db17d356dd8d554';
   var amount = req.query.amount;
   var ratePercent = req.query.ratePercent;
   var durationDays = req.query.durationDays;
   var origination = new Date().getTime();
+  console.log('try borrow money')
   try{
     console.log(amount, ratePercent, origination, durationDays, address)
-    contractInstance.borrow(amount, ratePercent, origination, durationDays, address, { from: web3.eth.accounts[1] }, function(result) {
+    contractInstance.borrowMoney(5, 5, origination, 5, address, { from: web3.eth.accounts[1] }, function(result) {
       // TODO: support failure
       console.log("Borrow result: ", result)
       res.send({ success: true });
     });
   } catch (e) {
+    console.log('FAIL!')
     res.status('400').send(`Failed! ${e}`);
   }
 });
 
-app.get('/payBack', function(req, res) {
-  var address = req.query.address;
-  var loanId = req.query.loanId;
-  var repayTimestamp = new Date();
+app.post('/payBack', function(req, res) {
+  var address = '0xda06ccee4d31a1ec671d4e467db17d356dd8d554';
   contractInstance.payBack(address, { from: web3.eth.accounts[1] }, function(result) {
     // TODO: support failure
     res.send({ success: true });
   });
 });
 
-app.get('/postOrder', function(req, res) {
+app.post('/postOrder', function(req, res) {
   var address = web3.eth.accounts[0];
   var order = new Date();
   contractInstance.postOrder.call(address, web3.eth.accounts[1]);
