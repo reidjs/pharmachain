@@ -40,20 +40,6 @@ class InventoryAI extends React.Component {
      setTimeout(function () { item.innerHTML = "<p>42 Items</p>"; },1000);
    }
 
-   // mouseEnterWhileDragging() {
-   //   let box = document.getElementsByClassName("drag-to-this-box")[0];
-   //
-   //   box.addEventListener("mouseover", (e) => {
-   //     box.innerHTML =
-   //      "<img src='../../assets/gear-loading.svg' width='30%''></img>";
-   //    })
-   //
-   //   box.addEventListener("mouseout", (e) => {
-   //     box.innerHTML =
-   //      '<span class="drag-here">Drag Here</span>';
-   //   });
-   // }
-
   render() {
     return (
       <div className="inventory">
