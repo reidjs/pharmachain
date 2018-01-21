@@ -25,7 +25,16 @@ class Seller extends React.Component {
   render() {
     let date = new Date();
     return (
-      <div>
+      <div className="container">
+        <h1>Order #20392482</h1>
+        <p> SanFran Pharmacy <br/>
+            1885 Mission St <br />
+            San Francisco, CA 94103
+        </p>
+        <ul className="labels" id="seller-spacing">
+          <li>Product</li>
+          <li>Amount</li>
+        </ul>
         <PharmacyContainer />
         {(!this.props.shipmentConfirmed) ? (
           <form>

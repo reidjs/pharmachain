@@ -135,7 +135,7 @@ div.splash {
 
 div.splash > img:first-child {
   position: absolute;
-  width: 900px;
+  width: 1279px;
   height: auto;
   z-index: -1;
 }
@@ -201,6 +201,7 @@ div#key-input > input {
 }
 div.container {
   padding: 20px;
+  margin-left: 153px;
 }
 div.container > h1 {
   font-size: 36px;
@@ -211,13 +212,19 @@ div.container > ul.labels {
   display: flex;
   justify-content: space-around;
   margin-right: 35px;
-  margin-left: 153px;
+  margin-left: 104px;
   padding: 20px;
+  width: 500px;
+}
+
+#seller-spacing {
+  margin-left: 160px;
+  width: 500px;
 }
 
 h2#total {
   font-size: 24px;
-  margin-left: 400px;
+  margin-left: 300px;
   padding: 10px;
 }
 
@@ -225,3 +232,27 @@ h2#total > span {
   margin-left: 25px;
 }
 
+div.container > p {
+  padding: 20px;
+}
+
+div.pharm-list {
+  margin-bottom: 30px;
+  width: 500px;
+}
+
+
+/* div.seller {
+  margin-left: 112px;
+} */
+
+/* div.seller > h1 {
+  font-size: 36px;
+  margin-top: 50px;
+  padding: 20px;
+}
+
+div.seller > p {
+  padding: 5px;
+  margin-bottom: 30px;
+} */
