@@ -85,7 +85,7 @@ input[type=number] {
   border: 1px solid #DDDDDD;
   background: yellow;
 }
-
+ 
 input[type=number]:focus {
   box-shadow: 0 0 5px rgba(81, 203, 238, 1);
   padding: 3px 0px 3px 3px;
@@ -171,28 +171,88 @@ div#key-input > input {
   margin-right: 20px;
 }
 
-.inventory {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
+.spinner {
+  width: 40px;
+  height: 40px;
+  background-color: #333;
+
+  margin: 100px auto;
+  -webkit-animation: sk-rotateplane 1.2s infinite ease-in-out;
+  animation: sk-rotateplane 1.2s infinite ease-in-out;
 }
 
-.drag-feature {
+@-webkit-keyframes sk-rotateplane {
+  0% { -webkit-transform: perspective(120px) }
+  50% { -webkit-transform: perspective(120px) rotateY(180deg) }
+  100% { -webkit-transform: perspective(120px) rotateY(180deg)  rotateX(180deg) }
+}
+
+@keyframes sk-rotateplane {
+  0% { 
+    transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+    -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg) 
+  } 50% { 
+    transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+    -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg) 
+  } 100% { 
+    transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+    -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+  }
+}
+div.container {
+  padding: 20px;
+  margin-left: 153px;
+}
+div.container > h1 {
+  font-size: 36px;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+div.container > ul.labels {
   display: flex;
   justify-content: space-around;
+  margin-right: 35px;
+  margin-left: 104px;
+  padding: 20px;
+  width: 500px;
 }
 
-.drag-to-this-box {
-  height: 8em;
-  width: 8em;
-  background: #f7f7f7;
-  border-radius: 9px;
-  box-shadow: 2px 5px 6px #888;
-  display: flex;
-    align-items: center;
-    justify-content: center;
+#seller-spacing {
+  margin-left: 160px;
+  width: 500px;
 }
 
-.hidden {
-  display: none;
+h2#total {
+  font-size: 24px;
+  margin-left: 300px;
+  padding: 10px;
 }
+
+h2#total > span {
+  margin-left: 25px;
+}
+
+div.container > p {
+  padding: 20px;
+}
+
+div.pharm-list {
+  margin-bottom: 30px;
+  width: 500px;
+}
+
+
+/* div.seller {
+  margin-left: 112px;
+} */
+
+/* div.seller > h1 {
+  font-size: 36px;
+  margin-top: 50px;
+  padding: 20px;
+}
+
+div.seller > p {
+  padding: 5px;
+  margin-bottom: 30px;
+} */
