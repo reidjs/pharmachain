@@ -13,8 +13,10 @@ let _defaultState = {
   orderPlaced: false,
   shipmentConfirmed: false,
   products: {
-   'advil': {name: 'advil', amount: 5},
-   'gloves': {name: 'gloves', amount: 1}
+   'vaccine': {img: "../assets/syringe.svg", name: 'vaccine', amount: 5},
+   'advil': {img: "../assets/pill.svg", name: 'advil', amount: 12},
+   'cot': {img: "../assets/bed.svg", name: 'cot', amount: 1},
+   'lipitor': {img: "../assets/pill.svg", name: 'lipitor', amount: 12},
   }
 };
 

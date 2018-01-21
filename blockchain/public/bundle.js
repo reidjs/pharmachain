@@ -18282,8 +18282,10 @@ var _defaultState = {
   orderPlaced: false,
   shipmentConfirmed: false,
   products: {
-    'advil': { name: 'advil', amount: 5 },
-    'gloves': { name: 'gloves', amount: 1 }
+    'vaccine': { img: "../assets/syringe.svg", name: 'vaccine', amount: 5 },
+    'advil': { img: "../assets/pill.svg", name: 'advil', amount: 12 },
+    'cot': { img: "../assets/bed.svg", name: 'cot', amount: 1 },
+    'lipitor': { img: "../assets/pill.svg", name: 'lipitor', amount: 12 }
   }
 };
 
@@ -18421,6 +18423,10 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRouterDom = __webpack_require__(48);
 
+var _merge = __webpack_require__(412);
+
+var _merge2 = _interopRequireDefault(_merge);
+
 var _pharmacy_item = __webpack_require__(590);
 
 var _pharmacy_item2 = _interopRequireDefault(_pharmacy_item);
@@ -18446,6 +18452,7 @@ var Pharmacy = function (_React$Component) {
     _this.calcSum = _this.calcSum.bind(_this);
     _this.state = { total: 0, inventory: _this.props.inventory };
     _this.user = _this.props.user;
+
     // debugger
     return _this;
   }
@@ -18472,7 +18479,8 @@ var Pharmacy = function (_React$Component) {
     value: function updateValue(product, amount) {
       // console.log('update');
       if (amount < 0) return 0;
-      var newInventory = Object.assign({}, this.state.inventory);
+      // let newInventory = Object.assign({}, this.state.inventory);
+      var newInventory = (0, _merge2.default)({}, this.state.inventory);
       newInventory[product].amount = amount;
       // console.log(newInventory);
       this.setState({ total: this.state.total, inventory: newInventory });
@@ -50236,6 +50244,7 @@ var PharmacyItem = function PharmacyItem(_ref) {
   return _react2.default.createElement(
     "li",
     { className: "product-card" },
+    _react2.default.createElement("img", { src: product.img }),
     _react2.default.createElement(
       "h1",
       null,

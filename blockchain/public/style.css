@@ -75,16 +75,15 @@ input[type=number] {
   -o-transition: all 0.30s ease-in-out;
   outline: none;
   padding: 3px 0px 3px 3px;
-  margin: 5px 1px 13px 10px;
-  margin: 10px;
   border: 1px solid #DDDDDD;
+  background: yellow;
 }
  
 input[type=number]:focus {
   box-shadow: 0 0 5px rgba(81, 203, 238, 1);
   padding: 3px 0px 3px 3px;
-  margin: 5px 1px 3px 0px;
   border: 1px solid rgba(81, 203, 238, 1);
+  background: white;
 }
 
 ul#products {
@@ -96,6 +95,9 @@ li.product-card {
   padding: 10px 10px;
   margin: 0 auto;
   margin-bottom: 10px;
+  display: flex;
+  justify-content: space-around;
+  background-color: #f7f7f7;
 }
 
 li.product-card:hover {
@@ -106,7 +108,6 @@ li.product-card:hover {
 
 li.product-card > h1 {
   display: inline-block;
-  border: 1px solid black;
   font-size: 14px;
   padding: 3px;
 }
@@ -114,3 +115,7 @@ li.product-card > h2 {
   padding: 4px;
 }
 
+li.product-card > img {
+  width: 30px;
+  height: 30px;
+}

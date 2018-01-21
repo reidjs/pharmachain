@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import merge from 'lodash/merge';
 import PharmacyItem from './pharmacy_item';
 class Pharmacy extends React.Component {
   constructor(props) {
@@ -10,6 +11,7 @@ class Pharmacy extends React.Component {
     this.calcSum = this.calcSum.bind(this);
     this.state = ({total: 0, inventory: this.props.inventory});
     this.user = this.props.user;
+
     // debugger
   }
   handleSubmit(e) {
@@ -27,7 +29,8 @@ class Pharmacy extends React.Component {
   updateValue(product, amount) {
     // console.log('update');
     if (amount < 0) return 0;
-    let newInventory = Object.assign({}, this.state.inventory);
+    // let newInventory = Object.assign({}, this.state.inventory);
+    let newInventory = merge({}, this.state.inventory);
     newInventory[product].amount = amount;
     // console.log(newInventory);
     this.setState({total: this.state.total, inventory: newInventory});
