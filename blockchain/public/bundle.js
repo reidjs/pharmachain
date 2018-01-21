@@ -18313,7 +18313,12 @@ var App = function App() {
   return _react2.default.createElement(
     'div',
     null,
-    _react2.default.createElement(_reactRouterDom.Route, { path: '/', component: _top_nav2.default }),
+    _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', render: function render() {
+        return _react2.default.createElement(_top_nav2.default, { route: "Pharmacy" });
+      } }),
+    _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/manufacturer', render: function render() {
+        return _react2.default.createElement(_top_nav2.default, { route: "Manufacturer" });
+      } }),
     _react2.default.createElement(
       'div',
       { className: 'main' },
@@ -18653,7 +18658,10 @@ var _Toolbar = __webpack_require__(436);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var TopNav = function TopNav() {
+var TopNav = function TopNav(_ref) {
+  var route = _ref.route;
+
+
   return _react2.default.createElement(
     'nav',
     { className: 'nav-container' },
@@ -18674,7 +18682,8 @@ var TopNav = function TopNav() {
         null,
         _react2.default.createElement(_FontIcon2.default, { className: 'muidocs-icon-custom-sort' }),
         _react2.default.createElement(_Toolbar.ToolbarSeparator, null),
-        'Pharmacy Account',
+        route,
+        ' Account',
         _react2.default.createElement(
           _IconMenu2.default,
           {

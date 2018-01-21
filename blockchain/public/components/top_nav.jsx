@@ -8,18 +8,18 @@ import IconMenu from 'material-ui/IconMenu';
 import IconButton from 'material-ui/IconButton';
 import FontIcon from 'material-ui/FontIcon';
 import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar';
-const TopNav = () => {
+const TopNav = ({route}) => {
+
   return (
     <nav className="nav-container">
       <div className="brand">
-      
         <Link to="/">PharmaChain</Link>
       </div>
       <div className="nav-links">
       <ToolbarGroup>
           <FontIcon className="muidocs-icon-custom-sort" />
           <ToolbarSeparator />
-          Pharmacy Account
+          {route} Account
           {/* <Link to="/information"><Rai  sedButton label="More Information" secondary={true} /></Link> */}
           <IconMenu
             iconButtonElement={

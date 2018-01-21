@@ -16,7 +16,8 @@ import TopNav from './top_nav';
 const App = () => {
   return (
     <div> 
-      <Route path="/" component={TopNav}/>
+      <Route exact path="/" render={() => <TopNav route={"Pharmacy"}/>}/>
+      <Route exact path="/manufacturer" render={() => <TopNav route={"Manufacturer"}/>}/>
       <div className="main">
         <Switch>
           <Route exact path="/" component={PharmacyContainer}/>
