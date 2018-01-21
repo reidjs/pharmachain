@@ -4644,6 +4644,8 @@ var RECEIVE_ORDER = exports.RECEIVE_ORDER = "RECEIVE_ORDER";
 //must do something to blockchain
 var submitOrder = exports.submitOrder = function submitOrder(order) {
   // console.log('order')
+<<<<<<< HEAD
+=======
   $.ajax({
     method: 'POST',
     url: "/payBack",
@@ -4651,6 +4653,7 @@ var submitOrder = exports.submitOrder = function submitOrder(order) {
       test: 0
     }
   });
+>>>>>>> 244f250bb71d2830ceea9c41abda04af05822fcd
   return {
     type: RECEIVE_ORDER,
     payload: {
@@ -4685,6 +4688,8 @@ var confirmShipment = exports.confirmShipment = function confirmShipment(shipmen
 //   );
 // };
 
+<<<<<<< HEAD
+=======
 //realistically this should be a post request
 var submitOrderToBlockchain = function submitOrderToBlockchain(order) {
   return $.ajax({
@@ -4693,6 +4698,7 @@ var submitOrderToBlockchain = function submitOrderToBlockchain(order) {
   });
 };
 
+>>>>>>> 244f250bb71d2830ceea9c41abda04af05822fcd
 // export const borrowRequestOnBlockchain = (data) => dispatch => (
 //   postBorrowRequest(data)
 //     .then(res => dispatch(borrowRequest(res)))
@@ -6586,7 +6592,11 @@ var _reactRouterDom = __webpack_require__(30);
 
 var _actions = __webpack_require__(68);
 
+<<<<<<< HEAD
+var _pharmacy = __webpack_require__(250);
+=======
 var _pharmacy = __webpack_require__(249);
+>>>>>>> 244f250bb71d2830ceea9c41abda04af05822fcd
 
 var _pharmacy2 = _interopRequireDefault(_pharmacy);
 
@@ -18510,7 +18520,11 @@ var _reduxThunk = __webpack_require__(595);
 
 var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
 
+<<<<<<< HEAD
+var _reducer = __webpack_require__(252);
+=======
 var _reducer = __webpack_require__(251);
+>>>>>>> 244f250bb71d2830ceea9c41abda04af05822fcd
 
 var _reducer2 = _interopRequireDefault(_reducer);
 
@@ -18561,7 +18575,11 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRouterDom = __webpack_require__(30);
 
+<<<<<<< HEAD
+var _route_util = __webpack_require__(253);
+=======
 var _route_util = __webpack_require__(252);
+>>>>>>> 244f250bb71d2830ceea9c41abda04af05822fcd
 
 var _pharmacy_container = __webpack_require__(92);
 
@@ -18579,13 +18597,17 @@ var _buyer_container = __webpack_require__(247);
 
 var _buyer_container2 = _interopRequireDefault(_buyer_container);
 
+<<<<<<< HEAD
+var _seller_container = __webpack_require__(255);
+=======
 var _seller_container = __webpack_require__(254);
+>>>>>>> 244f250bb71d2830ceea9c41abda04af05822fcd
 
 var _seller_container2 = _interopRequireDefault(_seller_container);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-//Turn routes to authroutes 
+//Turn routes to authroutes
 var App = function App() {
   return _react2.default.createElement(
     'div',
@@ -18637,6 +18659,13 @@ var _RaisedButton = __webpack_require__(61);
 
 var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
 
+<<<<<<< HEAD
+var _inventory = __webpack_require__(249);
+
+var _inventory2 = _interopRequireDefault(_inventory);
+
+=======
+>>>>>>> 244f250bb71d2830ceea9c41abda04af05822fcd
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -18660,12 +18689,20 @@ var Buyer = function (_React$Component) {
     value: function render() {
       return _react2.default.createElement(
         'div',
+<<<<<<< HEAD
+        null,
+=======
         { className: 'container' },
+>>>>>>> 244f250bb71d2830ceea9c41abda04af05822fcd
         _react2.default.createElement(
           'h1',
           null,
           'Inventory Management'
         ),
+<<<<<<< HEAD
+        _react2.default.createElement(_pharmacy_container2.default, null),
+        _react2.default.createElement(_inventory2.default, null)
+=======
         _react2.default.createElement(
           'ul',
           { className: 'labels' },
@@ -18686,6 +18723,7 @@ var Buyer = function (_React$Component) {
           )
         ),
         _react2.default.createElement(_pharmacy_container2.default, null)
+>>>>>>> 244f250bb71d2830ceea9c41abda04af05822fcd
       );
     }
   }]);
@@ -18779,6 +18817,128 @@ document.addEventListener("DOMContentLoaded", function () {
 
 /***/ }),
 /* 249 */
+<<<<<<< HEAD
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var InventoryAI = function (_React$Component) {
+  _inherits(InventoryAI, _React$Component);
+
+  function InventoryAI(props) {
+    _classCallCheck(this, InventoryAI);
+
+    var _this = _possibleConstructorReturn(this, (InventoryAI.__proto__ || Object.getPrototypeOf(InventoryAI)).call(this, props));
+
+    _this.restartCsvDrag = _this.restartCsvDrag.bind(_this);
+    // this.mouseEnterWhileDragging = this.mouseEnterWhileDragging.bind(this);
+    return _this;
+  }
+
+  _createClass(InventoryAI, [{
+    key: "restartCsvDrag",
+    value: function restartCsvDrag() {
+      var item = document.getElementById("p1");
+      item.innerHTML = "<img src='../../assets/csv-img.svg' width='20%''></img>";
+
+      var dropBox = document.getElementsByClassName("drag-to-this-box")[0];
+      dropBox.innerHTML = '<span class="drag-here">Drag Here</span>';
+
+      var inventory = document.getElementsByClassName("drag-feature")[0];
+      inventory.prepend(item);
+    }
+  }, {
+    key: "dragstart_handler",
+    value: function dragstart_handler(ev) {
+      // Set the drag effect to copy
+      ev.dataTransfer.dropEffect = "copy";
+      // this.mouseEnterWhileDragging();
+    }
+  }, {
+    key: "dragover_handler",
+    value: function dragover_handler(e) {
+      // Add the target element's id to the data transfer object
+      e.preventDefault();
+      e.dataTransfer.dropEffect = "move";
+    }
+  }, {
+    key: "drop_handler",
+    value: function drop_handler(e) {
+      e.preventDefault();
+      var item = document.getElementById("p1");
+      item.innerHTML = "<img src='../../assets/gear-loading.svg' width='30%''></img>";
+      document.getElementsByClassName("drag-here")[0].classList.toggle('hidden');
+      e.target.appendChild(item);
+
+      setTimeout(function () {
+        item.innerHTML = "<p>42 Items</p>";
+      }, 1000);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return _react2.default.createElement(
+        "div",
+        { className: "inventory" },
+        _react2.default.createElement(
+          "div",
+          { className: "drag-feature" },
+          _react2.default.createElement(
+            "p",
+            { id: "p1", draggable: "true",
+              onDragStart: this.dragstart_handler.bind(this) },
+            _react2.default.createElement("img", { src: "../../assets/csv-img.svg", width: "20%" })
+          ),
+          _react2.default.createElement(
+            "div",
+            { onDrop: this.drop_handler,
+              onDragOver: this.dragover_handler,
+              className: "drag-to-this-box" },
+            _react2.default.createElement(
+              "span",
+              { className: "drag-here" },
+              "Get Prediction"
+            )
+          )
+        ),
+        _react2.default.createElement(
+          "a",
+          { onClick: this.restartCsvDrag,
+            className: "new-prediction" },
+          "New Prediction"
+        )
+      );
+    }
+  }]);
+
+  return InventoryAI;
+}(_react2.default.Component);
+
+exports.default = InventoryAI;
+
+/***/ }),
+/* 250 */
+=======
+>>>>>>> 244f250bb71d2830ceea9c41abda04af05822fcd
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18800,7 +18960,11 @@ var _merge = __webpack_require__(193);
 
 var _merge2 = _interopRequireDefault(_merge);
 
+<<<<<<< HEAD
+var _pharmacy_item = __webpack_require__(251);
+=======
 var _pharmacy_item = __webpack_require__(250);
+>>>>>>> 244f250bb71d2830ceea9c41abda04af05822fcd
 
 var _pharmacy_item2 = _interopRequireDefault(_pharmacy_item);
 
@@ -18921,7 +19085,11 @@ var Pharmacy = function (_React$Component) {
 exports.default = Pharmacy;
 
 /***/ }),
+<<<<<<< HEAD
+/* 251 */
+=======
 /* 250 */
+>>>>>>> 244f250bb71d2830ceea9c41abda04af05822fcd
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18970,7 +19138,11 @@ var PharmacyItem = function PharmacyItem(_ref) {
 exports.default = PharmacyItem;
 
 /***/ }),
+<<<<<<< HEAD
+/* 252 */
+=======
 /* 251 */
+>>>>>>> 244f250bb71d2830ceea9c41abda04af05822fcd
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19021,7 +19193,11 @@ var reducer = function reducer() {
 exports.default = reducer;
 
 /***/ }),
+<<<<<<< HEAD
+/* 253 */
+=======
 /* 252 */
+>>>>>>> 244f250bb71d2830ceea9c41abda04af05822fcd
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19072,7 +19248,11 @@ var AuthRoute = exports.AuthRoute = (0, _reactRouterDom.withRouter)((0, _reactRe
 var ProtectedRoute = exports.ProtectedRoute = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(mapStateToProps, null)(Protected));
 
 /***/ }),
+<<<<<<< HEAD
+/* 254 */
+=======
 /* 253 */
+>>>>>>> 244f250bb71d2830ceea9c41abda04af05822fcd
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19096,10 +19276,13 @@ var _RaisedButton = __webpack_require__(61);
 
 var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
 
+<<<<<<< HEAD
+=======
 var _shipment_log = __webpack_require__(255);
 
 var _shipment_log2 = _interopRequireDefault(_shipment_log);
 
+>>>>>>> 244f250bb71d2830ceea9c41abda04af05822fcd
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -19116,11 +19299,17 @@ var Seller = function (_React$Component) {
 
     var _this = _possibleConstructorReturn(this, (Seller.__proto__ || Object.getPrototypeOf(Seller)).call(this, props));
 
+<<<<<<< HEAD
+    _this.state = { tracking: "0x934FC3232AD2" };
+    _this.handleChange = _this.handleChange.bind(_this);
+    _this.handleSubmit = _this.handleSubmit.bind(_this);
+=======
     _this.state = { tracking: "0x934FC3232AD2", loading: true };
     _this.handleChange = _this.handleChange.bind(_this);
     _this.handleSubmit = _this.handleSubmit.bind(_this);
     _this.toggleLoad = _this.toggleLoad.bind(_this);
 
+>>>>>>> 244f250bb71d2830ceea9c41abda04af05822fcd
     return _this;
   }
 
@@ -19132,6 +19321,9 @@ var Seller = function (_React$Component) {
   }, {
     key: 'handleSubmit',
     value: function handleSubmit(e) {
+<<<<<<< HEAD
+      this.props.confirm(e.target.value);
+=======
       var val = e.target.value;
       this.props.confirm(val);
     }
@@ -19139,6 +19331,7 @@ var Seller = function (_React$Component) {
     key: 'toggleLoad',
     value: function toggleLoad() {
       this.state.loading ? this.setState({ loading: false }) : this.setState({ loading: true });
+>>>>>>> 244f250bb71d2830ceea9c41abda04af05822fcd
     }
   }, {
     key: 'render',
@@ -19146,6 +19339,9 @@ var Seller = function (_React$Component) {
       var date = new Date();
       return _react2.default.createElement(
         'div',
+<<<<<<< HEAD
+        null,
+=======
         { className: 'container' },
         _react2.default.createElement(
           'h1',
@@ -19175,13 +19371,27 @@ var Seller = function (_React$Component) {
             'Amount'
           )
         ),
+>>>>>>> 244f250bb71d2830ceea9c41abda04af05822fcd
         _react2.default.createElement(_pharmacy_container2.default, null),
         !this.props.shipmentConfirmed ? _react2.default.createElement(
           'form',
           null,
           _react2.default.createElement('input', { type: 'text', onChange: this.handleChange, placeholder: 'Enter tracking number' }),
           _react2.default.createElement(_RaisedButton2.default, { onClick: this.handleSubmit, label: 'Confirm Shipment', primary: true })
+<<<<<<< HEAD
+        ) : _react2.default.createElement(
+          'div',
+          null,
+          date.toLocaleDateString(),
+          ', ',
+          date.toLocaleTimeString(),
+          ': Shipment Confirmed. Tracking Number: ',
+          this.state.tracking,
+          '.'
+        )
+=======
         ) : _react2.default.createElement(_shipment_log2.default, { tracking: this.state.tracking, loading: this.state.loading, toggleLoad: this.toggleLoad })
+>>>>>>> 244f250bb71d2830ceea9c41abda04af05822fcd
       );
     }
   }]);
@@ -19192,7 +19402,11 @@ var Seller = function (_React$Component) {
 exports.default = Seller;
 
 /***/ }),
+<<<<<<< HEAD
+/* 255 */
+=======
 /* 254 */
+>>>>>>> 244f250bb71d2830ceea9c41abda04af05822fcd
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19208,7 +19422,11 @@ var _reactRouterDom = __webpack_require__(30);
 
 var _actions = __webpack_require__(68);
 
+<<<<<<< HEAD
+var _seller = __webpack_require__(254);
+=======
 var _seller = __webpack_require__(253);
+>>>>>>> 244f250bb71d2830ceea9c41abda04af05822fcd
 
 var _seller2 = _interopRequireDefault(_seller);
 
@@ -19235,6 +19453,8 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 exports.default = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_seller2.default));
 
 /***/ }),
+<<<<<<< HEAD
+=======
 /* 255 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -19304,6 +19524,7 @@ var ShipmentLog = function (_React$Component) {
 exports.default = ShipmentLog;
 
 /***/ }),
+>>>>>>> 244f250bb71d2830ceea9c41abda04af05822fcd
 /* 256 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -28715,6 +28936,7 @@ module.exports = baseIsTypedArray;
 
 /***/ }),
 /* 371 */
+<<<<<<< HEAD
 /***/ (function(module, exports, __webpack_require__) {
 
 var isPrototype = __webpack_require__(117),
@@ -28753,6 +28975,46 @@ module.exports = baseKeys;
 /* 372 */
 /***/ (function(module, exports, __webpack_require__) {
 
+=======
+/***/ (function(module, exports, __webpack_require__) {
+
+var isPrototype = __webpack_require__(117),
+    nativeKeys = __webpack_require__(409);
+
+/** Used for built-in method references. */
+var objectProto = Object.prototype;
+
+/** Used to check objects for own properties. */
+var hasOwnProperty = objectProto.hasOwnProperty;
+
+/**
+ * The base implementation of `_.keys` which doesn't treat sparse arrays as dense.
+ *
+ * @private
+ * @param {Object} object The object to query.
+ * @returns {Array} Returns the array of property names.
+ */
+function baseKeys(object) {
+  if (!isPrototype(object)) {
+    return nativeKeys(object);
+  }
+  var result = [];
+  for (var key in Object(object)) {
+    if (hasOwnProperty.call(object, key) && key != 'constructor') {
+      result.push(key);
+    }
+  }
+  return result;
+}
+
+module.exports = baseKeys;
+
+
+/***/ }),
+/* 372 */
+/***/ (function(module, exports, __webpack_require__) {
+
+>>>>>>> 244f250bb71d2830ceea9c41abda04af05822fcd
 var isObject = __webpack_require__(37),
     isPrototype = __webpack_require__(117),
     nativeKeysIn = __webpack_require__(410);

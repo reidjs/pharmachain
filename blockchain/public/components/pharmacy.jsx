@@ -4,10 +4,11 @@ import merge from 'lodash/merge';
 import PharmacyItem from './pharmacy_item';
 import RaisedButton from 'material-ui/RaisedButton';
 
+
 class Pharmacy extends React.Component {
   constructor(props) {
     super(props);
-    
+
     this.handleSubmit = this.handleSubmit.bind(this);
     this.updateValue = this.updateValue.bind(this);
     this.calcSum = this.calcSum.bind(this);
@@ -21,7 +22,7 @@ class Pharmacy extends React.Component {
     this.props.history.push(`/`);
   }
   componentWillReceiveProps(nextProps) {
-    this.user = nextProps.user; 
+    this.user = nextProps.user;
   }
   componentWillMount() {
     this.calcSum();
@@ -61,8 +62,11 @@ class Pharmacy extends React.Component {
     });
 
     return (
+      <div>
+
       <div className="pharm-list">
-        
+
+
         <ul id="products">
           {listItems}
         </ul>
@@ -72,7 +76,9 @@ class Pharmacy extends React.Component {
         ) : (
           <div></div>
         )}
-        
+
+
+
       </div>
     );
   }
