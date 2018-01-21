@@ -10,9 +10,7 @@ import {
   AuthRoute, 
   ProtectedRoute 
 } from './route_util';
-import SplashContainer from './splash_container';
-import BorrowContainer from './borrow_container';
-import PaybackContainer from './payback_container';
+import PharmacyContainer from './pharmacy_container';
 import TopNav from './top_nav';
 //Turn routes to authroutes 
 const App = () => {
@@ -21,9 +19,7 @@ const App = () => {
       <Route path="/" component={TopNav}/>
       <div className="main">
         <Switch>
-          <Route exact path="/" component={SplashContainer}/>
-          <Route exact path="/borrow" component={BorrowContainer}/>
-          <Route exact path="/payback" component={PaybackContainer}/>
+          <Route exact path="/" component={PharmacyContainer}/>
         </Switch>
       </div>
     </div>

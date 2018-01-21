@@ -5,16 +5,21 @@ import Pharmacy from './pharmacy';
 
 const mapStateToProps = (state, ownProps) => {
   const user = 'Test user';
-  const inventory = [
-    {
-      name: 'vaccine',
-      amount: 5
-    },
-    {
-      name: 'gloves',
-      amount: 10
-    }
-  ];
+  // const inventory  = [
+  //   ['aspirin', 5], 
+  //   ['gloves', 1],
+  //   ['cots', 2]];
+  let inventory = state.products;
+  // const inventory = [
+  //   {
+  //     name: 'vaccine',
+  //     amount: 5
+  //   },
+  //   {
+  //     name: 'gloves',
+  //     amount: 10
+  //   }
+  // ];
   return {
     user,
     inventory

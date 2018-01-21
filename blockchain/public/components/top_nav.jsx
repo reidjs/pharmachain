@@ -13,14 +13,14 @@ const TopNav = () => {
     <nav className="nav-container">
       <div className="brand">
       
-        <Link to="/">Sugar</Link>
+        <Link to="/">PharmaChain</Link>
       </div>
       <div className="nav-links">
       <ToolbarGroup>
           <FontIcon className="muidocs-icon-custom-sort" />
           <ToolbarSeparator />
-          <Link to="/borrow"><RaisedButton label="Borrow" primary={true} /></Link>
-          <Link to="/payback"><RaisedButton label="Pay Loan" secondary={true} /></Link>
+          Pharmacy Account
+          {/* <Link to="/information"><Rai  sedButton label="More Information" secondary={true} /></Link> */}
           <IconMenu
             iconButtonElement={
               <IconButton touch={true}>
@@ -28,8 +28,8 @@ const TopNav = () => {
               </IconButton>
             }
           >
-            <MenuItem primaryText="Lend Money" />
-            <MenuItem primaryText="More Info" />
+            <Link to="/"><MenuItem primaryText="Pharmacy" /></Link>
+            <Link to="/manufacturer"><MenuItem primaryText="Manufacturer" /></Link>
           </IconMenu>
         </ToolbarGroup>          
       </div>
