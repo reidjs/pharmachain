@@ -62,13 +62,11 @@ class Pharmacy extends React.Component {
     });
 
     return (
-<<<<<<< HEAD
       <div>
 
-=======
       <div className="pharm-list">
-        
->>>>>>> 244f250bb71d2830ceea9c41abda04af05822fcd
+
+
         <ul id="products">
           {listItems}
         </ul>

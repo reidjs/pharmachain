@@ -11,18 +11,18 @@ class Buyer extends React.Component {
 
   render() {
     return (
-<<<<<<< HEAD
+
       <div>
         <h1>Inventory Management</h1>
-=======
+
       <div className="container">
-        <h1>Inventory Management</h1>  
+        <h1>Inventory Management</h1>
         <ul className="labels">
           <li>Product</li>
           <li>Inventory</li>
           <li>Order</li>
         </ul>
->>>>>>> 244f250bb71d2830ceea9c41abda04af05822fcd
+
         <PharmacyContainer />
         <InventoryAI/>
       </div>
