@@ -4647,8 +4647,11 @@ var submitOrder = exports.submitOrder = function submitOrder(order) {
 <<<<<<< HEAD
 =======
   $.ajax({
-    method: 'GET',
-    url: "/postOrder"
+    method: 'POST',
+    url: "/payBack",
+    data: {
+      test: 0
+    }
   });
 >>>>>>> 244f250bb71d2830ceea9c41abda04af05822fcd
   return {
@@ -4660,7 +4663,14 @@ var submitOrder = exports.submitOrder = function submitOrder(order) {
 };
 
 var confirmShipment = exports.confirmShipment = function confirmShipment(shipment) {
-  // console.log('order')
+  // console.log('order');
+  $.ajax({
+    method: 'POST',
+    url: "/payBack",
+    data: {
+      test: 0
+    }
+  });
   return {
     type: RECEIVE_SHIPMENT_CONFIRMATION,
     payload: {

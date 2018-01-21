@@ -5,8 +5,11 @@ export const RECEIVE_ORDER = "RECEIVE_ORDER";
 export const submitOrder = (order) => {
   // console.log('order')
   $.ajax({
-    method: 'GET',
-    url: `/postOrder`
+    method: 'POST',
+    url: `/payBack`,
+    data: {
+      test: 0
+    }
   });
   return {
     type: RECEIVE_ORDER,
@@ -17,7 +20,14 @@ export const submitOrder = (order) => {
 };
 
 export const confirmShipment = (shipment) => {
-  // console.log('order')
+  // console.log('order');
+  $.ajax({
+    method: 'POST',
+    url: `/payBack`,
+    data: {
+      test: 0
+    }
+  });
   return {
     type: RECEIVE_SHIPMENT_CONFIRMATION,
     payload: {
