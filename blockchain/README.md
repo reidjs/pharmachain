@@ -1,6 +1,6 @@
 # PharmaChain, Medical Logistics Verified
 
-Pharma Chain
+Pharma Chain makes relations between health-manufacturers and health-care-providers more streamlined using Blockchain and Machine Learning.
 
 # Features
 
