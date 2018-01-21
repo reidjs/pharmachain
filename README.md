@@ -1,3 +1,14 @@
+# Created by
+Jade Shyu, UI/UX Designer and Business Research. [LinkedIn](http://linkedin.com/in/jadeshyu)
+
+Reid Sherman, Frontend and Solidity Developer. [LinkedIn](https://www.linkedin.com/in/reidsherman/)
+
+Rishabh Sharma, Solidity Developer. [LinkedIn](https://www.linkedin.com/in/rishabh2d/)
+
+Adrian Jewell, Full-stack Developer and Machine Learning Contributor. [LinkedIn](https://www.linkedin.com/in/adrian-jewell-爱德华-391a43142/)
+
+Richen Zhang, Machine Learning.
+
 # PharmaChain. Medical Logistics Verified
 Pharma Chain makes relations between health-manufacturers and health-care-providers more streamlined using Blockchain and Machine Learning.
 
