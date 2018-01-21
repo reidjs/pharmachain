@@ -12,9 +12,7 @@ const TopNav = ({route}) => {
 
   return (
     <nav className="nav-container">
-      <div className="brand">
-        <Link to="/">PharmaChain</Link>
-      </div>
+      <Link to="/"><img id="brand" src="../assets/logo-sm.svg" /></Link>
       <div className="nav-links">
       <ToolbarGroup>
           <FontIcon className="muidocs-icon-custom-sort" />

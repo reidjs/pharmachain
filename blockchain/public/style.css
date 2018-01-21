@@ -52,13 +52,20 @@ body {
   font-family: 'Work Sans', sans-serif;
 }
 div.brand {
-  font-size: 35px;
+  /* font-size: 35px; */
+}
+
+img#brand {
+  position: relative;
+  top: 27%;
 }
 
 nav.nav-container {
   display: flex;
   justify-content: space-between;
   padding: 20px 20px;
+  background-color: #3952a2;
+  color: white;
 }
 
 div.nav-links > a {
@@ -191,5 +198,30 @@ div#key-input > input {
     transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
     -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
   }
+}
+div.container {
+  padding: 20px;
+}
+div.container > h1 {
+  font-size: 36px;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+div.container > ul.labels {
+  display: flex;
+  justify-content: space-around;
+  margin-right: 35px;
+  margin-left: 153px;
+  padding: 20px;
+}
+
+h2#total {
+  font-size: 24px;
+  margin-left: 400px;
+  padding: 10px;
+}
+
+h2#total > span {
+  margin-left: 25px;
 }
 

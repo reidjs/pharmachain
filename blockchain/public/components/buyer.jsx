@@ -10,8 +10,13 @@ class Buyer extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="container">
         <h1>Inventory Management</h1>  
+        <ul className="labels">
+          <li>Product</li>
+          <li>Inventory</li>
+          <li>Order</li>
+        </ul>
         <PharmacyContainer />
       </div>
     );

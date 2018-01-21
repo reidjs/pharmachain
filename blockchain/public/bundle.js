@@ -18536,8 +18536,17 @@ var Pharmacy = function (_React$Component) {
           { id: 'products' },
           listItems
         ),
-        'total ',
-        this.state.total,
+        _react2.default.createElement(
+          'h2',
+          { id: 'total' },
+          ' total ',
+          _react2.default.createElement(
+            'span',
+            null,
+            this.state.total
+          ),
+          ' '
+        ),
         this.props.location.pathname === "/pharmacy" ? _react2.default.createElement(_RaisedButton2.default, { onClick: function onClick() {
             _this2.props.order(_this2.state.inventory);
           }, label: buttonText, secondary: this.props.orderPlaced }) : _react2.default.createElement('div', null)
@@ -18773,13 +18782,9 @@ var TopNav = function TopNav(_ref) {
     'nav',
     { className: 'nav-container' },
     _react2.default.createElement(
-      'div',
-      { className: 'brand' },
-      _react2.default.createElement(
-        _reactRouterDom.Link,
-        { to: '/' },
-        'PharmaChain'
-      )
+      _reactRouterDom.Link,
+      { to: '/' },
+      _react2.default.createElement('img', { id: 'brand', src: '../assets/logo-sm.svg' })
     ),
     _react2.default.createElement(
       'div',
@@ -50583,11 +50588,30 @@ var Buyer = function (_React$Component) {
     value: function render() {
       return _react2.default.createElement(
         'div',
-        null,
+        { className: 'container' },
         _react2.default.createElement(
           'h1',
           null,
           'Inventory Management'
+        ),
+        _react2.default.createElement(
+          'ul',
+          { className: 'labels' },
+          _react2.default.createElement(
+            'li',
+            null,
+            'Product'
+          ),
+          _react2.default.createElement(
+            'li',
+            null,
+            'Inventory'
+          ),
+          _react2.default.createElement(
+            'li',
+            null,
+            'Order'
+          )
         ),
         _react2.default.createElement(_pharmacy_container2.default, null)
       );

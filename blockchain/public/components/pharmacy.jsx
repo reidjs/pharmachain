@@ -66,7 +66,7 @@ class Pharmacy extends React.Component {
         <ul id="products">
           {listItems}
         </ul>
-        total {this.state.total}
+        <h2 id="total"> total <span>{this.state.total}</span> </h2>
         {(this.props.location.pathname === "/pharmacy") ? (
           <RaisedButton onClick={()=>{this.props.order(this.state.inventory);}} label={buttonText} secondary={this.props.orderPlaced}/>
         ) : (
