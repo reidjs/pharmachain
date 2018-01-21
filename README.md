@@ -53,6 +53,8 @@ In this particular instance of a neural network, previous input is CDC 'Fluview'
 
 This specific instance of a neural network is a recursive neural network, which directly relies on the result of previous data inputs to predict future inputs. A keras model run on top of Tensorflow GPU processing library to make predictions.
 
+https://github.com/Adrianjewell91/pharmaChainRNN
+
 ````python 
 model = Sequential()
 
