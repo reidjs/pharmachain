@@ -4657,7 +4657,11 @@ var submitOrder = exports.submitOrder = function submitOrder(order) {
 };
 
 var confirmShipment = exports.confirmShipment = function confirmShipment(shipment) {
-  // console.log('order')
+  // console.log('order');
+  $.ajax({
+    method: 'GET',
+    url: "/postOrder"
+  });
   return {
     type: RECEIVE_SHIPMENT_CONFIRMATION,
     payload: {

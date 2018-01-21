@@ -20,9 +20,10 @@ contract Ibcs {
   address private owner;
   string public name;
   string public symbol;
+  uint public count = 0;
   uint8 public decimals = 18;
   uint256 public totalSupply;
-
+  //constructor
   function Ibcs(uint256 initialSupply, string tokenName, string tokenSymbol) public payable {
     totalSupply = initialSupply * 10 ** uint256(decimals);
     owner = msg.sender;
@@ -91,6 +92,7 @@ contract Ibcs {
   event orderReceived(address sender, uint test);
 
   function postOrder(address sender, uint id) returns (bool) {
+    count++;  
     orderReceived(sender, id);
     return true;
   }

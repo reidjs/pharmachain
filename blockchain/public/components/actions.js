@@ -17,7 +17,11 @@ export const submitOrder = (order) => {
 };
 
 export const confirmShipment = (shipment) => {
-  // console.log('order')
+  // console.log('order');
+  $.ajax({
+    method: 'GET',
+    url: `/postOrder`
+  });
   return {
     type: RECEIVE_SHIPMENT_CONFIRMATION,
     payload: {
