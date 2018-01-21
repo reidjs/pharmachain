@@ -50506,11 +50506,8 @@ var Buyer = function (_React$Component) {
   function Buyer(props) {
     _classCallCheck(this, Buyer);
 
-    var _this = _possibleConstructorReturn(this, (Buyer.__proto__ || Object.getPrototypeOf(Buyer)).call(this, props));
-
-    _this.buttonText = "Place Order";
+    return _possibleConstructorReturn(this, (Buyer.__proto__ || Object.getPrototypeOf(Buyer)).call(this, props));
     // this.placeOrder = this.placeOrder.bind(this);
-    return _this;
   }
 
   _createClass(Buyer, [{
@@ -50518,6 +50515,10 @@ var Buyer = function (_React$Component) {
     value: function render() {
       var _this2 = this;
 
+      var buttonText = "Place Order";
+      if (this.props.orderPlaced) {
+        buttonText = "Cancel Order";
+      }
       return _react2.default.createElement(
         'div',
         null,
@@ -50529,7 +50530,7 @@ var Buyer = function (_React$Component) {
         _react2.default.createElement(_pharmacy_container2.default, null),
         _react2.default.createElement(_RaisedButton2.default, { onClick: function onClick() {
             _this2.props.order('hello');
-          }, label: this.buttonText })
+          }, label: buttonText, secondary: this.props.orderPlaced })
       );
     }
   }]);
@@ -50569,8 +50570,9 @@ var _values2 = _interopRequireDefault(_values);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
+
   return {
-    order: state.orderPlaced
+    orderPlaced: state.orderPlaced
   };
 };
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {

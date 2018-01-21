@@ -48,9 +48,10 @@ input[type="submit"] {
   clear: both; }
 
 /*# sourceMappingURL=reset.css.map */
-
+body {
+  font-family: 'Work Sans', sans-serif;
+}
 div.brand {
-  font-family: 'Joti One', cursive;
   font-size: 35px;
 }
 

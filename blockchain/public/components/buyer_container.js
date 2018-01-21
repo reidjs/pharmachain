@@ -5,8 +5,9 @@ import Buyer from './buyer';
 import values from 'lodash/values';
 
 const mapStateToProps = (state, ownProps) => {
+  
   return {
-    order: state.orderPlaced
+    orderPlaced: state.orderPlaced
   };
 };
 const mapDispatchToProps = dispatch => ({
