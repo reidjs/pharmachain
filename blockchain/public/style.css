@@ -181,6 +181,9 @@ div#key-input > input {
   background: #f7f7f7;
   border-radius: 9px;
   box-shadow: 2px 5px 6px #888;
+  display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .hidden {

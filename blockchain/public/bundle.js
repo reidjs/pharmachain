@@ -18775,7 +18775,7 @@ var InventoryAI = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (InventoryAI.__proto__ || Object.getPrototypeOf(InventoryAI)).call(this, props));
 
     _this.restartCsvDrag = _this.restartCsvDrag.bind(_this);
-
+    // this.mouseEnterWhileDragging = this.mouseEnterWhileDragging.bind(this);
     return _this;
   }
 
@@ -18783,7 +18783,7 @@ var InventoryAI = function (_React$Component) {
     key: "restartCsvDrag",
     value: function restartCsvDrag() {
       var item = document.getElementById("p1");
-      item.innerHTML = "<img src='../../assets/csv-img.svg' width='5%''></img>";
+      item.innerHTML = "<img src='../../assets/csv-img.svg' width='20%''></img>";
 
       var dropBox = document.getElementsByClassName("drag-to-this-box")[0];
       dropBox.innerHTML = '<span class="drag-here">Drag Here</span>';
@@ -18796,6 +18796,7 @@ var InventoryAI = function (_React$Component) {
     value: function dragstart_handler(ev) {
       // Set the drag effect to copy
       ev.dataTransfer.dropEffect = "copy";
+      // this.mouseEnterWhileDragging();
     }
   }, {
     key: "dragover_handler",
@@ -18817,6 +18818,21 @@ var InventoryAI = function (_React$Component) {
         item.innerHTML = "<p>42 Items</p>";
       }, 1000);
     }
+
+    // mouseEnterWhileDragging() {
+    //   let box = document.getElementsByClassName("drag-to-this-box")[0];
+    //
+    //   box.addEventListener("mouseover", (e) => {
+    //     box.innerHTML =
+    //      "<img src='../../assets/gear-loading.svg' width='30%''></img>";
+    //    })
+    //
+    //   box.addEventListener("mouseout", (e) => {
+    //     box.innerHTML =
+    //      '<span class="drag-here">Drag Here</span>';
+    //   });
+    // }
+
   }, {
     key: "render",
     value: function render() {
@@ -18829,8 +18845,8 @@ var InventoryAI = function (_React$Component) {
           _react2.default.createElement(
             "p",
             { id: "p1", draggable: "true",
-              onDragStart: this.dragstart_handler },
-            _react2.default.createElement("img", { src: "../../assets/csv-img.svg", width: "5%" })
+              onDragStart: this.dragstart_handler.bind(this) },
+            _react2.default.createElement("img", { src: "../../assets/csv-img.svg", width: "20%" })
           ),
           _react2.default.createElement(
             "div",
@@ -18840,7 +18856,7 @@ var InventoryAI = function (_React$Component) {
             _react2.default.createElement(
               "span",
               { className: "drag-here" },
-              "Drag Here"
+              "Get Prediction"
             )
           )
         ),

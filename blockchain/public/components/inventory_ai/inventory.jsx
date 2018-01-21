@@ -4,12 +4,12 @@ class InventoryAI extends React.Component {
   constructor(props) {
     super(props);
     this.restartCsvDrag = this.restartCsvDrag.bind(this);
-
+    // this.mouseEnterWhileDragging = this.mouseEnterWhileDragging.bind(this);
   }
 
   restartCsvDrag() {
     let item = document.getElementById("p1");
-    item.innerHTML = "<img src='../../assets/csv-img.svg' width='5%''></img>";
+    item.innerHTML = "<img src='../../assets/csv-img.svg' width='20%''></img>";
 
     let dropBox = document.getElementsByClassName("drag-to-this-box")[0];
     dropBox.innerHTML = '<span class="drag-here">Drag Here</span>';
@@ -21,6 +21,7 @@ class InventoryAI extends React.Component {
   dragstart_handler(ev) {
     // Set the drag effect to copy
     ev.dataTransfer.dropEffect = "copy";
+    // this.mouseEnterWhileDragging();
   }
 
   dragover_handler(e) {
@@ -37,22 +38,35 @@ class InventoryAI extends React.Component {
      e.target.appendChild(item);
 
      setTimeout(function () { item.innerHTML = "<p>42 Items</p>"; },1000);
-
    }
+
+   // mouseEnterWhileDragging() {
+   //   let box = document.getElementsByClassName("drag-to-this-box")[0];
+   //
+   //   box.addEventListener("mouseover", (e) => {
+   //     box.innerHTML =
+   //      "<img src='../../assets/gear-loading.svg' width='30%''></img>";
+   //    })
+   //
+   //   box.addEventListener("mouseout", (e) => {
+   //     box.innerHTML =
+   //      '<span class="drag-here">Drag Here</span>';
+   //   });
+   // }
 
   render() {
     return (
       <div className="inventory">
         <div className="drag-feature">
           <p id="p1" draggable="true"
-                     onDragStart={this.dragstart_handler}>
-          <img src="../../assets/csv-img.svg" width="5%"></img>
+                     onDragStart={this.dragstart_handler.bind(this)}>
+          <img src="../../assets/csv-img.svg" width="20%"></img>
           </p>
 
           <div onDrop={this.drop_handler}
                onDragOver={this.dragover_handler}
                className="drag-to-this-box">
-               <span className="drag-here">Drag Here</span>
+               <span className="drag-here">Get Prediction</span>
           </div>
         </div>
         <a  onClick={this.restartCsvDrag}
