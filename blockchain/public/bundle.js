@@ -18587,6 +18587,7 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
     user: user,
     location: location,
+    orderPlaced: state.orderPlaced,
     inventory: inventory,
     invarray: invarray
   };
@@ -50555,10 +50556,6 @@ var Buyer = function (_React$Component) {
   _createClass(Buyer, [{
     key: 'render',
     value: function render() {
-      var buttonText = "Place Order";
-      if (this.props.orderPlaced) {
-        buttonText = "Cancel Order";
-      }
       return _react2.default.createElement(
         'div',
         null,

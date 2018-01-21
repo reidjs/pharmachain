@@ -26,6 +26,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     user,
     location,
+    orderPlaced: state.orderPlaced,
     inventory, 
     invarray
   };

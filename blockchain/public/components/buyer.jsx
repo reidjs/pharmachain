@@ -9,10 +9,6 @@ class Buyer extends React.Component {
   }
 
   render() {
-    let buttonText = "Place Order";
-    if (this.props.orderPlaced) {
-      buttonText = "Cancel Order";
-    }
     return (
       <div>
         <h1>Inventory Management</h1>  
