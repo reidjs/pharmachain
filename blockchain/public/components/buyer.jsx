@@ -1,8 +1,6 @@
 import React from 'react';
 import PharmacyContainer from './pharmacy_container';
 import RaisedButton from 'material-ui/RaisedButton';
-import { submitOrder } from './actions';
-var clickValue = "Place Order";
 
 class Buyer extends React.Component {
   constructor(props) {

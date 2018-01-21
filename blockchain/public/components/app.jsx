@@ -14,6 +14,7 @@ import PharmacyContainer from './pharmacy_container';
 import TopNav from './top_nav';
 import Splash from './splash';
 import BuyerContainer from './buyer_container';
+import SellerContainer from './seller_container';
 //Turn routes to authroutes 
 const App = () => {
   return (
@@ -24,6 +25,7 @@ const App = () => {
         <Switch>
           <Route exact path="/" component={Splash}/>
           <Route exact path="/pharmacy" component={BuyerContainer}/>
+          <Route exact path="/manufacturer" component={SellerContainer}/>
         </Switch>
       </div>
     </div>

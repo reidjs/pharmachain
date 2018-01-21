@@ -1,4 +1,4 @@
-export const RECEIVE_PRODUCTS_QUANTITIES = "RECEIVE_PRODUCTS";
+export const RECEIVE_SHIPMENT_CONFIRMATION = "RECEIVE_SHIPMENT_CONFIRMATION";
 export const RECEIVE_ORDER = "RECEIVE_ORDER";
 
 //must do something to blockchain
@@ -11,6 +11,17 @@ export const submitOrder = (order) => {
     } 
   };
 };
+
+export const confirmShipment = (shipment) => {
+  // console.log('order')
+  return {
+    type: RECEIVE_SHIPMENT_CONFIRMATION,
+    payload: {
+      shipment
+    } 
+  };
+};
+
 
 
 // const getExpectedUsageOfProduct = (product) => {

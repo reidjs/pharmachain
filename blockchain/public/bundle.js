@@ -11755,7 +11755,7 @@ module.exports = lowPriorityWarning;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var RECEIVE_PRODUCTS_QUANTITIES = exports.RECEIVE_PRODUCTS_QUANTITIES = "RECEIVE_PRODUCTS";
+var RECEIVE_SHIPMENT_CONFIRMATION = exports.RECEIVE_SHIPMENT_CONFIRMATION = "RECEIVE_SHIPMENT_CONFIRMATION";
 var RECEIVE_ORDER = exports.RECEIVE_ORDER = "RECEIVE_ORDER";
 
 //must do something to blockchain
@@ -11765,6 +11765,16 @@ var submitOrder = exports.submitOrder = function submitOrder(order) {
     type: RECEIVE_ORDER,
     payload: {
       order: order
+    }
+  };
+};
+
+var confirmShipment = exports.confirmShipment = function confirmShipment(shipment) {
+  // console.log('order')
+  return {
+    type: RECEIVE_SHIPMENT_CONFIRMATION,
+    payload: {
+      shipment: shipment
     }
   };
 };
@@ -18270,6 +18280,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 var _defaultState = {
   orderPlaced: false,
+  shipmentConfirmed: false,
   products: {
     'advil': { name: 'advil', amount: 5 },
     'gloves': { name: 'gloves', amount: 1 }
@@ -18319,6 +18330,10 @@ var _buyer_container = __webpack_require__(599);
 
 var _buyer_container2 = _interopRequireDefault(_buyer_container);
 
+var _seller_container = __webpack_require__(602);
+
+var _seller_container2 = _interopRequireDefault(_seller_container);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 //Turn routes to authroutes 
@@ -18339,7 +18354,8 @@ var App = function App() {
         _reactRouterDom.Switch,
         null,
         _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _splash2.default }),
-        _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/pharmacy', component: _buyer_container2.default })
+        _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/pharmacy', component: _buyer_container2.default }),
+        _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/manufacturer', component: _seller_container2.default })
       )
     )
   );
@@ -18598,7 +18614,8 @@ var reducer = function reducer() {
   Object.freeze(state);
   var newState = Object.assign({}, state);
   switch (action.type) {
-    case _actions.RECEIVE_ORDERS:
+    case _actions.RECEIVE_SHIPMENT_CONFIRMATION:
+      newState.shipmentConfirmed = true;
       return newState;
     case _actions.RECEIVE_ORDER:
       newState.orderPlaced = true;
@@ -50488,8 +50505,6 @@ var _RaisedButton = __webpack_require__(190);
 
 var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
 
-var _actions = __webpack_require__(143);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -50497,8 +50512,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var clickValue = "Place Order";
 
 var Buyer = function (_React$Component) {
   _inherits(Buyer, _React$Component);
@@ -50584,6 +50597,134 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   };
 };
 exports.default = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_buyer2.default));
+
+/***/ }),
+/* 600 */,
+/* 601 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _pharmacy_container = __webpack_require__(243);
+
+var _pharmacy_container2 = _interopRequireDefault(_pharmacy_container);
+
+var _RaisedButton = __webpack_require__(190);
+
+var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Seller = function (_React$Component) {
+  _inherits(Seller, _React$Component);
+
+  function Seller(props) {
+    _classCallCheck(this, Seller);
+
+    var _this = _possibleConstructorReturn(this, (Seller.__proto__ || Object.getPrototypeOf(Seller)).call(this, props));
+
+    _this.state = { tracking: "" };
+    _this.handleChange = _this.handleChange.bind(_this);
+    _this.handleSubmit = _this.handleSubmit.bind(_this);
+    return _this;
+  }
+
+  _createClass(Seller, [{
+    key: 'handleChange',
+    value: function handleChange(e) {
+      this.setState({ tracking: e.target.value });
+    }
+  }, {
+    key: 'handleSubmit',
+    value: function handleSubmit(e) {
+      this.props.confirm(e.target.value);
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement(_pharmacy_container2.default, null),
+        !this.props.shipmentConfirmed ? _react2.default.createElement(
+          'form',
+          null,
+          _react2.default.createElement('input', { type: 'text', onChange: this.handleChange, placeholder: 'Enter tracking number' }),
+          _react2.default.createElement(_RaisedButton2.default, { onClick: this.handleSubmit, label: 'Confirm Shipment', primary: true })
+        ) : _react2.default.createElement(
+          'div',
+          null,
+          'Shipment placed ',
+          this.state.tracking
+        )
+      );
+    }
+  }]);
+
+  return Seller;
+}(_react2.default.Component);
+
+exports.default = Seller;
+
+/***/ }),
+/* 602 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _reactRedux = __webpack_require__(137);
+
+var _reactRouterDom = __webpack_require__(48);
+
+var _actions = __webpack_require__(143);
+
+var _seller = __webpack_require__(601);
+
+var _seller2 = _interopRequireDefault(_seller);
+
+var _values = __webpack_require__(596);
+
+var _values2 = _interopRequireDefault(_values);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var mapStateToProps = function mapStateToProps(state, ownProps) {
+
+  return {
+    shipmentConfirmed: state.shipmentConfirmed
+  };
+};
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    // getloans: (address) => dispatch(getLoans(address)),
+    confirm: function confirm(payload) {
+      return dispatch((0, _actions.confirmShipment)(payload));
+    }
+  };
+};
+exports.default = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_seller2.default));
 
 /***/ })
 /******/ ]);
