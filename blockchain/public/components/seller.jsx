@@ -5,7 +5,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 class Seller extends React.Component {
   constructor(props) {
     super(props);
-    this.state = ({tracking: ""});
+    this.state = ({tracking: "0x934FC3232AD2"});
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -16,6 +16,7 @@ class Seller extends React.Component {
     this.props.confirm(e.target.value);
   }
   render() {
+    let date = new Date();
     return (
       <div>
         <PharmacyContainer />
@@ -26,7 +27,7 @@ class Seller extends React.Component {
           </form>
         ) : (
           <div>
-            Shipment placed {this.state.tracking}
+            {date.toLocaleDateString()}, {date.toLocaleTimeString()}: Shipment Confirmed. Tracking Number: {this.state.tracking}.
           </div>
         )}
       </div>

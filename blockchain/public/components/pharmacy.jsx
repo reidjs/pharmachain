@@ -53,11 +53,10 @@ class Pharmacy extends React.Component {
     return (
       <div>
         
-        total {this.state.total}
         <ul id="products">
           {listItems}
         </ul>
-        <button onClick={this.calcSum}>button</button>
+        total {this.state.total}
       </div>
     );
   }

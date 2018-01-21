@@ -18502,18 +18502,13 @@ var Pharmacy = function (_React$Component) {
       return _react2.default.createElement(
         'div',
         null,
-        'total ',
-        this.state.total,
         _react2.default.createElement(
           'ul',
           { id: 'products' },
           listItems
         ),
-        _react2.default.createElement(
-          'button',
-          { onClick: this.calcSum },
-          'button'
-        )
+        'total ',
+        this.state.total
       );
     }
   }]);
@@ -50640,7 +50635,7 @@ var Seller = function (_React$Component) {
 
     var _this = _possibleConstructorReturn(this, (Seller.__proto__ || Object.getPrototypeOf(Seller)).call(this, props));
 
-    _this.state = { tracking: "" };
+    _this.state = { tracking: "0x934FC3232AD2" };
     _this.handleChange = _this.handleChange.bind(_this);
     _this.handleSubmit = _this.handleSubmit.bind(_this);
     return _this;
@@ -50659,6 +50654,7 @@ var Seller = function (_React$Component) {
   }, {
     key: 'render',
     value: function render() {
+      var date = new Date();
       return _react2.default.createElement(
         'div',
         null,
@@ -50671,8 +50667,12 @@ var Seller = function (_React$Component) {
         ) : _react2.default.createElement(
           'div',
           null,
-          'Shipment placed ',
-          this.state.tracking
+          date.toLocaleDateString(),
+          ', ',
+          date.toLocaleTimeString(),
+          ': Shipment Confirmed. Tracking Number: ',
+          this.state.tracking,
+          '.'
         )
       );
     }
