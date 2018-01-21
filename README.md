@@ -60,12 +60,11 @@ model.fit(x_train, y_test, num_epochs, num_batch, validation_data = (x_test, y_t
 We're adding features that will summarize data and help healthcare organizations and manufacturers organize inventory.
 
 For healthcare providers, we're:
+- Compiling trend data, with the ability to filter
+- Showing cost per unit and other prices for products
+- Creating an updates module for order updates, sourced from the blockchain
 
-Compiling trend data, with the ability to filter
-Showing cost per unit and other prices for products
-Creating an updates module for order updates, sourced from the blockchain
 For manufacturers:
-
-Dashboard of recent and historical orders, with the ability to filter
-Converting from USD to ETH and back
-Account summary with current balance
+- Dashboard of recent and historical orders, with the ability to filter
+- Converting from USD to ETH and back
+- Account summary with current balance
