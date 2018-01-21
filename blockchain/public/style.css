@@ -1,0 +1,213 @@
+html, body, header, nav, h1, a,
+ul, li, strong, main, button, i,
+section, img, div, h2, p, form,
+fieldset, label, input, textarea,
+span, article, footer, time, small {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font: inherit;
+  color: inherit;
+  text-align: inherit;
+  text-decoration: inherit;
+  vertical-align: inherit;
+  box-sizing: inherit;
+  background: transparent; }
+
+ul {
+  list-style: none; }
+
+img {
+  display: block;
+  width: 100%;
+  height: auto; }
+
+input[type="password"],
+input[type="email"],
+input[type="text"],
+input[type="submit"],
+textarea,
+button {
+  /*
+  Get rid of native styling. Read more here:
+  http://css-tricks.com/almanac/properties/a/appearance/
+  */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none; }
+
+button,
+input[type="submit"] {
+  cursor: pointer; }
+
+/* Clearfix */
+.group:after {
+  content: "";
+  display: block;
+  clear: both; }
+
+/*# sourceMappingURL=reset.css.map */
+
+
+.red {
+  color: red;
+}
+
+.green {
+  color: green;
+}
+
+div.brand {
+  font-family: 'Joti One', cursive;
+  font-size: 35px;
+}
+
+nav.nav-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 20px;
+}
+
+div.nav-links > a {
+  background: blue;
+  padding: 5px;
+  margin: 0px 10px;
+}
+
+.hero-image {
+  /* The image used */
+  background-image: url("https://res.cloudinary.com/eventbike/image/upload/v1515942556/splash3_qyieal.jpg");
+  width: 100%;
+  height: 900px;
+  /* Set a specific height */
+  /* height: 50%; */
+
+  /* Position and center the image to scale nicely on all screens */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+/* Place text in the middle of the image */
+.hero-text {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 23px;
+  text-shadow: 2px 2px #000000;
+
+}
+
+
+h1.splash {
+  position: absolute;
+  top: 20%;
+  left: 20%;
+  font-size: 34px;
+  color: white;
+  text-shadow: 1px 1px #000000;
+
+}
+
+ul.splash {
+  position: absolute;
+  top: 30%;
+  left: 30%;
+  display: flex;
+  justify-content: right;
+  flex-direction: column;
+  color: white;
+  padding: 5px;
+}
+
+ul.splash > li {
+  padding: 5px;
+  font-size: 20px;
+}
+
+
+input[type=number] {
+  width: 50px;
+  -webkit-transition: all 0.30s ease-in-out;
+  -moz-transition: all 0.30s ease-in-out;
+  -ms-transition: all 0.30s ease-in-out;
+  -o-transition: all 0.30s ease-in-out;
+  outline: none;
+  padding: 3px 0px 3px 3px;
+  margin: 5px 1px 13px 10px;
+  margin: 10px;
+  border: 1px solid #DDDDDD;
+}
+ 
+input[type=number]:focus {
+  box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+  padding: 3px 0px 3px 3px;
+  margin: 5px 1px 3px 0px;
+  border: 1px solid rgba(81, 203, 238, 1);
+}
+
+ul#loans {
+  margin: 0 auto;
+  width: 600px;
+}
+
+li.loan-card {
+  padding: 10px 10px;
+  margin: 0 auto;
+  margin-bottom: 10px;
+}
+
+li.loan-card:hover {
+  -webkit-box-shadow: 3px 3px 5px 6px #ccc;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+  -moz-box-shadow:    3px 3px 5px 6px #ccc;  /* Firefox 3.5 - 3.6 */
+  box-shadow:         3px 3px 5px 6px #ccc;
+}
+
+li.loan-card > h1 {
+  display: inline-block;
+  border: 1px solid black;
+  font-size: 14px;
+  padding: 3px;
+}
+li.loan-card > h2 {
+  padding: 4px;
+}
+div.borrow-form-container {
+  background: white;
+}
+
+div#background {
+  background-color: rgb(13, 108, 167);
+}
+
+div.borrow-container {
+  margin: 20px auto;
+  text-align: center;
+  width: 500px;
+  height: 400px;
+  background-color: white;  
+}
+
+div.borrow-container > h1 {
+  font-size: 24px;
+  color: blue;
+  margin: 20px 5px;
+  padding-top: 40px;
+}
+div.borrow-container h2 {
+  text-align: center;
+  margin: 10px 10px;
+}
+div#external {
+  margin: 40px 40px;
+}
+div#external > a {
+  margin: 10px;
+}
+
+
