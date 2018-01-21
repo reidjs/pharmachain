@@ -3,11 +3,12 @@ export const RECEIVE_ORDER = "RECEIVE_ORDER";
 
 //must do something to blockchain
 export const submitOrder = (order) => {
+  // console.log('order')
   return {
     type: RECEIVE_ORDER,
     payload: {
       order
-    }
+    } 
   };
 };
 

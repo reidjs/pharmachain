@@ -10,6 +10,7 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 let _defaultState = {
+  orderPlaced: false,
   products: {
    'advil': {name: 'advil', amount: 5},
    'gloves': {name: 'gloves', amount: 1}

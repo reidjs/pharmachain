@@ -11760,6 +11760,7 @@ var RECEIVE_ORDER = exports.RECEIVE_ORDER = "RECEIVE_ORDER";
 
 //must do something to blockchain
 var submitOrder = exports.submitOrder = function submitOrder(order) {
+  // console.log('order')
   return {
     type: RECEIVE_ORDER,
     payload: {
@@ -18268,6 +18269,7 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 var _defaultState = {
+  orderPlaced: false,
   products: {
     'advil': { name: 'advil', amount: 5 },
     'gloves': { name: 'gloves', amount: 1 }
@@ -18309,6 +18311,14 @@ var _top_nav = __webpack_require__(246);
 
 var _top_nav2 = _interopRequireDefault(_top_nav);
 
+var _splash = __webpack_require__(597);
+
+var _splash2 = _interopRequireDefault(_splash);
+
+var _buyer_container = __webpack_require__(599);
+
+var _buyer_container2 = _interopRequireDefault(_buyer_container);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 //Turn routes to authroutes 
@@ -18316,7 +18326,7 @@ var App = function App() {
   return _react2.default.createElement(
     'div',
     null,
-    _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', render: function render() {
+    _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/pharmacy', render: function render() {
         return _react2.default.createElement(_top_nav2.default, { route: "Pharmacy" });
       } }),
     _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/manufacturer', render: function render() {
@@ -18328,7 +18338,8 @@ var App = function App() {
       _react2.default.createElement(
         _reactRouterDom.Switch,
         null,
-        _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _pharmacy_container2.default })
+        _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _splash2.default }),
+        _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/pharmacy', component: _buyer_container2.default })
       )
     )
   );
@@ -18393,10 +18404,6 @@ var _react = __webpack_require__(1);
 var _react2 = _interopRequireDefault(_react);
 
 var _reactRouterDom = __webpack_require__(48);
-
-var _RaisedButton = __webpack_require__(190);
-
-var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
 
 var _pharmacy_item = __webpack_require__(590);
 
@@ -18479,11 +18486,6 @@ var Pharmacy = function (_React$Component) {
       return _react2.default.createElement(
         'div',
         null,
-        _react2.default.createElement(
-          'h1',
-          null,
-          'Inventory Management'
-        ),
         'total ',
         this.state.total,
         _react2.default.createElement(
@@ -18491,7 +18493,6 @@ var Pharmacy = function (_React$Component) {
           { id: 'products' },
           listItems
         ),
-        _react2.default.createElement(_RaisedButton2.default, { label: 'Confirm Order' }),
         _react2.default.createElement(
           'button',
           { onClick: this.calcSum },
@@ -18600,7 +18601,7 @@ var reducer = function reducer() {
     case _actions.RECEIVE_ORDERS:
       return newState;
     case _actions.RECEIVE_ORDER:
-
+      newState.orderPlaced = true;
       return newState;
     default:
       return state;
@@ -18746,7 +18747,7 @@ var TopNav = function TopNav(_ref) {
           },
           _react2.default.createElement(
             _reactRouterDom.Link,
-            { to: '/' },
+            { to: '/pharmacy' },
             _react2.default.createElement(_MenuItem2.default, { primaryText: 'Pharmacy' })
           ),
           _react2.default.createElement(
@@ -50423,6 +50424,164 @@ function values(object) {
 
 module.exports = values;
 
+
+/***/ }),
+/* 597 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _RaisedButton = __webpack_require__(190);
+
+var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
+
+var _reactRouterDom = __webpack_require__(48);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Splash = function Splash() {
+  return _react2.default.createElement(
+    'div',
+    null,
+    _react2.default.createElement('img', { src: '../assets/splash1.jpg' }),
+    _react2.default.createElement(
+      _reactRouterDom.Link,
+      { to: '/pharmacy' },
+      _react2.default.createElement(_RaisedButton2.default, { label: 'Enter' })
+    )
+  );
+};
+
+exports.default = Splash;
+
+/***/ }),
+/* 598 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _pharmacy_container = __webpack_require__(243);
+
+var _pharmacy_container2 = _interopRequireDefault(_pharmacy_container);
+
+var _RaisedButton = __webpack_require__(190);
+
+var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
+
+var _actions = __webpack_require__(143);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var clickValue = "Place Order";
+
+var Buyer = function (_React$Component) {
+  _inherits(Buyer, _React$Component);
+
+  function Buyer(props) {
+    _classCallCheck(this, Buyer);
+
+    var _this = _possibleConstructorReturn(this, (Buyer.__proto__ || Object.getPrototypeOf(Buyer)).call(this, props));
+
+    _this.buttonText = "Place Order";
+    // this.placeOrder = this.placeOrder.bind(this);
+    return _this;
+  }
+
+  _createClass(Buyer, [{
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
+
+      return _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement(
+          'h1',
+          null,
+          'Inventory Management'
+        ),
+        _react2.default.createElement(_pharmacy_container2.default, null),
+        _react2.default.createElement(_RaisedButton2.default, { onClick: function onClick() {
+            _this2.props.order('hello');
+          }, label: this.buttonText })
+      );
+    }
+  }]);
+
+  return Buyer;
+}(_react2.default.Component);
+
+;
+
+exports.default = Buyer;
+
+/***/ }),
+/* 599 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _reactRedux = __webpack_require__(137);
+
+var _reactRouterDom = __webpack_require__(48);
+
+var _actions = __webpack_require__(143);
+
+var _buyer = __webpack_require__(598);
+
+var _buyer2 = _interopRequireDefault(_buyer);
+
+var _values = __webpack_require__(596);
+
+var _values2 = _interopRequireDefault(_values);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var mapStateToProps = function mapStateToProps(state, ownProps) {
+  return {
+    order: state.orderPlaced
+  };
+};
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    // getloans: (address) => dispatch(getLoans(address)),
+    order: function order(payload) {
+      return dispatch((0, _actions.submitOrder)(payload));
+    }
+  };
+};
+exports.default = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_buyer2.default));
 
 /***/ })
 /******/ ]);

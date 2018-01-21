@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import RaisedButton from 'material-ui/RaisedButton';
 import PharmacyItem from './pharmacy_item';
 class Pharmacy extends React.Component {
   constructor(props) {
@@ -53,12 +52,11 @@ class Pharmacy extends React.Component {
     });
     return (
       <div>
-        <h1>Inventory Management</h1>
+        
         total {this.state.total}
         <ul id="products">
           {listItems}
         </ul>
-        <RaisedButton label="Confirm Order"/>
         <button onClick={this.calcSum}>button</button>
       </div>
     );

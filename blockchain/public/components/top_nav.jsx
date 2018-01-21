@@ -28,7 +28,7 @@ const TopNav = ({route}) => {
               </IconButton>
             }
           >
-            <Link to="/"><MenuItem primaryText="Pharmacy" /></Link>
+            <Link to="/pharmacy"><MenuItem primaryText="Pharmacy" /></Link>
             <Link to="/manufacturer"><MenuItem primaryText="Manufacturer" /></Link>
           </IconMenu>
         </ToolbarGroup>          

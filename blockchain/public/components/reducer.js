@@ -17,7 +17,7 @@ const reducer = (state = initialState, action) => {
     case RECEIVE_ORDERS: 
       return newState;
     case RECEIVE_ORDER:
-
+      newState.orderPlaced = true;
       return newState;
     default:
       return state;
