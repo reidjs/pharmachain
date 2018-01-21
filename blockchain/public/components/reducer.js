@@ -19,6 +19,14 @@ const reducer = (state = initialState, action) => {
       newState.shipmentConfirmed = true;
       return newState;
     case RECEIVE_ORDER:
+      console.log(action.payload.order);
+      //every action.payload.order key buyamount needs to be updated in state
+      for(var key in action.payload.order) {
+        if (!action.payload.order.hasOwnProperty(key)) continue;
+        if (!newState.products.hasOwnProperty(key)) continue;
+        newState.products[key].buyAmount = parseInt(action.payload.order[key].buyAmount);
+      }
+      // debugger
       newState.orderPlaced = true;
       return newState;
     default:

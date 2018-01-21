@@ -18527,7 +18527,7 @@ var Pharmacy = function (_React$Component) {
         'total ',
         this.state.total,
         this.props.location.pathname === "/pharmacy" ? _react2.default.createElement(_RaisedButton2.default, { onClick: function onClick() {
-            _this2.props.order('hello');
+            _this2.props.order(_this2.state.inventory);
           }, label: buttonText, secondary: this.props.orderPlaced }) : _react2.default.createElement('div', null)
       );
     }
@@ -18636,6 +18636,14 @@ var reducer = function reducer() {
       newState.shipmentConfirmed = true;
       return newState;
     case _actions.RECEIVE_ORDER:
+      console.log(action.payload.order);
+      //every action.payload.order key buyamount needs to be updated in state
+      for (var key in action.payload.order) {
+        if (!action.payload.order.hasOwnProperty(key)) continue;
+        if (!newState.products.hasOwnProperty(key)) continue;
+        newState.products[key].buyAmount = parseInt(action.payload.order[key].buyAmount);
+      }
+      // debugger
       newState.orderPlaced = true;
       return newState;
     default:
