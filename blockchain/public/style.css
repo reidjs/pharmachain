@@ -165,7 +165,9 @@ div#key-input > input {
 }
 
 .drag-to-this-box {
-  height: 50px;
-  width: 10%;
+  height: 8em;
+  width: 8em;
   border: 1px solid black;
+  border-radius: 9px;
+  box-shadow: 2px 5px 6px #888;
 }

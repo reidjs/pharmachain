@@ -3,6 +3,18 @@ import React from 'react';
 class InventoryAI extends React.Component {
   constructor(props) {
     super(props);
+    this.restartCsvDrag = this.restartCsvDrag.bind(this);
+  }
+
+  restartCsvDrag() {
+    let item = document.getElementById("p1");
+    item.innerHTML = "<img src='../../assets/csv-img.svg' width='5%''></img>";
+
+    let dropBox = document.getElementsByClassName("drag-to-this-box")[0];
+    dropBox.innerHTML = "";
+
+    let inventory = document.getElementsByClassName("inventory")[0];
+    inventory.prepend(item);
   }
 
   dragstart_handler(ev) {
@@ -18,14 +30,17 @@ class InventoryAI extends React.Component {
 
    drop_handler(e) {
      e.preventDefault();
-     let data = e.dataTransfer.getData("text");
-     console.log(document.getElementById(data));
-     e.target.appendChild(document.getElementById("p1"));
+     let item = document.getElementById("p1");
+     item.innerHTML = "<img src='../../assets/gear-loading.svg' width='30%''></img>"
+     e.target.appendChild(item);
+
+     setTimeout(function () { item.innerHTML = "<p>42 Items</p>"; },2000);
+
    }
 
   render() {
     return (
-      <div>
+      <div className="inventory">
         <p id="p1" draggable="true"
                    onDragStart={this.dragstart_handler}>
         <img src="../../assets/csv-img.svg" width="5%"></img>
@@ -35,6 +50,9 @@ class InventoryAI extends React.Component {
              onDragOver={this.dragover_handler}
              className="drag-to-this-box">
         </div>
+
+        <a  onClick={this.restartCsvDrag}
+            className="new-prediction">New Prediction</a>
 
       </div>
     );

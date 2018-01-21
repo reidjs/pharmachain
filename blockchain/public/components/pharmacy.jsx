@@ -77,7 +77,6 @@ class Pharmacy extends React.Component {
 
         <InventoryAI/>
 
-
       </div>
     );
   }

@@ -18767,10 +18767,25 @@ var InventoryAI = function (_React$Component) {
   function InventoryAI(props) {
     _classCallCheck(this, InventoryAI);
 
-    return _possibleConstructorReturn(this, (InventoryAI.__proto__ || Object.getPrototypeOf(InventoryAI)).call(this, props));
+    var _this = _possibleConstructorReturn(this, (InventoryAI.__proto__ || Object.getPrototypeOf(InventoryAI)).call(this, props));
+
+    _this.restartCsvDrag = _this.restartCsvDrag.bind(_this);
+    return _this;
   }
 
   _createClass(InventoryAI, [{
+    key: "restartCsvDrag",
+    value: function restartCsvDrag() {
+      var item = document.getElementById("p1");
+      item.innerHTML = "<img src='../../assets/csv-img.svg' width='5%''></img>";
+
+      var dropBox = document.getElementsByClassName("drag-to-this-box")[0];
+      dropBox.innerHTML = "";
+
+      var inventory = document.getElementsByClassName("inventory")[0];
+      inventory.prepend(item);
+    }
+  }, {
     key: "dragstart_handler",
     value: function dragstart_handler(ev) {
       // Set the drag effect to copy
@@ -18787,16 +18802,20 @@ var InventoryAI = function (_React$Component) {
     key: "drop_handler",
     value: function drop_handler(e) {
       e.preventDefault();
-      var data = e.dataTransfer.getData("text");
-      console.log(document.getElementById(data));
-      e.target.appendChild(document.getElementById("p1"));
+      var item = document.getElementById("p1");
+      item.innerHTML = "<img src='../../assets/gear-loading.svg' width='30%''></img>";
+      e.target.appendChild(item);
+
+      setTimeout(function () {
+        item.innerHTML = "<p>42 Items</p>";
+      }, 2000);
     }
   }, {
     key: "render",
     value: function render() {
       return _react2.default.createElement(
         "div",
-        null,
+        { className: "inventory" },
         _react2.default.createElement(
           "p",
           { id: "p1", draggable: "true",
@@ -18805,7 +18824,13 @@ var InventoryAI = function (_React$Component) {
         ),
         _react2.default.createElement("div", { onDrop: this.drop_handler,
           onDragOver: this.dragover_handler,
-          className: "drag-to-this-box" })
+          className: "drag-to-this-box" }),
+        _react2.default.createElement(
+          "a",
+          { onClick: this.restartCsvDrag,
+            className: "new-prediction" },
+          "New Prediction"
+        )
       );
     }
   }]);
