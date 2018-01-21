@@ -19,7 +19,8 @@ class InventoryAI extends React.Component {
    drop_handler(e) {
      e.preventDefault();
      let data = e.dataTransfer.getData("text");
-     e.target.appendChild(document.getElementById(data));
+     console.log(document.getElementById(data));
+     e.target.appendChild(document.getElementById("p1"));
    }
 
   render() {

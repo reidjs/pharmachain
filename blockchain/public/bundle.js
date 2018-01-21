@@ -18788,7 +18788,8 @@ var InventoryAI = function (_React$Component) {
     value: function drop_handler(e) {
       e.preventDefault();
       var data = e.dataTransfer.getData("text");
-      e.target.appendChild(document.getElementById(data));
+      console.log(document.getElementById(data));
+      e.target.appendChild(document.getElementById("p1"));
     }
   }, {
     key: "render",
