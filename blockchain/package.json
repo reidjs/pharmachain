@@ -1,5 +1,5 @@
 {
-  "name": "hello_world_voting",
+  "name": "test",
   "version": "1.0.0",
   "description": "first try at DaPP ",
   "main": "index.js",
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gtan66/test-dapp.git"
+    "url": "nope"
   },
-  "author": "Grace Tan",
+  "author": "reid sherman",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/gtan66/test-dapp/issues"
+    "url": "nope"
   },
-  "homepage": "https://github.com/gtan66/test-dapp#readme",
+  "homepage": "nope",
   "dependencies": {
     "body-parser": "1.18.1",
     "concurrently": "3.4.0",

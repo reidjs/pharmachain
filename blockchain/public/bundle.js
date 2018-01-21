@@ -50668,6 +50668,10 @@ var _RaisedButton = __webpack_require__(190);
 
 var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
 
+var _shipment_log = __webpack_require__(603);
+
+var _shipment_log2 = _interopRequireDefault(_shipment_log);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -50684,9 +50688,11 @@ var Seller = function (_React$Component) {
 
     var _this = _possibleConstructorReturn(this, (Seller.__proto__ || Object.getPrototypeOf(Seller)).call(this, props));
 
-    _this.state = { tracking: "0x934FC3232AD2" };
+    _this.state = { tracking: "0x934FC3232AD2", loading: true };
     _this.handleChange = _this.handleChange.bind(_this);
     _this.handleSubmit = _this.handleSubmit.bind(_this);
+    _this.toggleLoad = _this.toggleLoad.bind(_this);
+
     return _this;
   }
 
@@ -50698,7 +50704,13 @@ var Seller = function (_React$Component) {
   }, {
     key: 'handleSubmit',
     value: function handleSubmit(e) {
-      this.props.confirm(e.target.value);
+      var val = e.target.value;
+      this.props.confirm(val);
+    }
+  }, {
+    key: 'toggleLoad',
+    value: function toggleLoad() {
+      this.state.loading ? this.setState({ loading: false }) : this.setState({ loading: true });
     }
   }, {
     key: 'render',
@@ -50713,16 +50725,7 @@ var Seller = function (_React$Component) {
           null,
           _react2.default.createElement('input', { type: 'text', onChange: this.handleChange, placeholder: 'Enter tracking number' }),
           _react2.default.createElement(_RaisedButton2.default, { onClick: this.handleSubmit, label: 'Confirm Shipment', primary: true })
-        ) : _react2.default.createElement(
-          'div',
-          null,
-          date.toLocaleDateString(),
-          ', ',
-          date.toLocaleTimeString(),
-          ': Shipment Confirmed. Tracking Number: ',
-          this.state.tracking,
-          '.'
-        )
+        ) : _react2.default.createElement(_shipment_log2.default, { tracking: this.state.tracking, loading: this.state.loading, toggleLoad: this.toggleLoad })
       );
     }
   }]);
@@ -50774,6 +50777,79 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   };
 };
 exports.default = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_seller2.default));
+
+/***/ }),
+/* 603 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var ShipmentLog = function (_React$Component) {
+  _inherits(ShipmentLog, _React$Component);
+
+  function ShipmentLog(props) {
+    _classCallCheck(this, ShipmentLog);
+
+    return _possibleConstructorReturn(this, (ShipmentLog.__proto__ || Object.getPrototypeOf(ShipmentLog)).call(this, props));
+  }
+
+  _createClass(ShipmentLog, [{
+    key: 'componentWillMount',
+    value: function componentWillMount() {
+      setTimeout(this.props.toggleLoad, 1000);
+    }
+  }, {
+    key: 'componentWillReceiveProps',
+    value: function componentWillReceiveProps(newProps) {
+      this.props = newProps;
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var date = new Date();
+      if (this.props.loading) {
+        return _react2.default.createElement(
+          'div',
+          null,
+          'spinner here'
+        );
+      } else {
+        return _react2.default.createElement(
+          'div',
+          null,
+          date.toLocaleDateString(),
+          ', ',
+          date.toLocaleTimeString(),
+          ': Shipment Confirmed. Tracking Number: ',
+          this.props.tracking
+        );
+      }
+    }
+  }]);
+
+  return ShipmentLog;
+}(_react2.default.Component);
+
+exports.default = ShipmentLog;
 
 /***/ })
 /******/ ]);

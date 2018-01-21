@@ -8,7 +8,7 @@ const abiDefinition = JSON.parse(compiledCode.contracts[':Ibcs'].interface);
 const IbcsContract = web3.eth.contract(abiDefinition);
 const byteCode = compiledCode.contracts[':Ibcs'].bytecode;
 
-const params = {"comment": "test"}
+const params = {"comment": "test "};
 const deployedContract = IbcsContract.new(params, { data: byteCode, from: web3.eth.accounts[0], gas: 4700000 });
 
 module.exports = deployedContract;

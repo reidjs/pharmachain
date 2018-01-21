@@ -82,7 +82,7 @@ app.get('/postOrder', function(req, res) {
   var address = web3.eth.accounts[0];
   var order = new Date();
   contractInstance.postOrder.call(address, web3.eth.accounts[1]);
-  res.sendFile(path.join(__dirname + 'public/index.html'));
+  // res.sendFile(path.join(__dirname + 'public/index.html'));
 });
 
 
