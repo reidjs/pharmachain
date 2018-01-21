@@ -25,7 +25,7 @@ PharmaChain is a predictive medical inventory platform powered by blockchain.
 
 Healthcare supply chain is a $2.3 billion global market, but there are inefficiencies inherent to how it works today. It's expensive, complex, and many problems are present in inventory management.
 
-Not only is supply chain a hospital's greatest expense, a study showed that hospitals could save $9.9 million per year by optimizing the process. In addition, the wait time between fund exchanges, along with transaction fees, can be quite high.
+Not only is supply chain a hospital's second greatest expense, a study showed that hospitals could save $9.9 million per year by optimizing the process. In addition, the wait time between fund exchanges, along with transaction fees, can be quite high.
 
 Typically, hospitals work with a third party distributor to order products. The process looks simple from the outside, but's a fragmented process involving stakeholders for compliance, including manufacturers, insurance companies, hospitals, healthcare providers, group purchasing organizations, and regulatory agencies.
 
