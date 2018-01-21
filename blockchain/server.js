@@ -78,6 +78,13 @@ app.get('/payBack', function(req, res) {
   });
 });
 
+app.get('/postOrder', function(req, res) {
+  var address = web3.eth.accounts[0];
+  var order = new Date();
+  contractInstance.postOrder.call(address, web3.eth.accounts[1]);
+  // res.sendFile(path.join(__dirname + 'public/index.html'));
+});
+
 
 app.listen(3000, function () {
   console.log('App ready and listening on port 3000!')

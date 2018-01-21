@@ -88,4 +88,10 @@ contract Ibcs {
     loans[id].repayTimestamp = repayTimestamp;
     balance[borrower] = balance[borrower] + loans[id].amount;
   }
+  event orderReceived(address sender, uint test);
+
+  function postOrder(address sender, uint id) returns (bool) {
+    orderReceived(sender, id);
+    return true;
+  }
 }

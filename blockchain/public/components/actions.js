@@ -4,6 +4,10 @@ export const RECEIVE_ORDER = "RECEIVE_ORDER";
 //must do something to blockchain
 export const submitOrder = (order) => {
   // console.log('order')
+  $.ajax({
+    method: 'GET',
+    url: `/postOrder`
+  });
   return {
     type: RECEIVE_ORDER,
     payload: {
@@ -32,6 +36,17 @@ export const confirmShipment = (shipment) => {
 //     })
 //   );
 // };
+
+//realistically this should be a post request
+const submitOrderToBlockchain = (order) => {
+  return (
+    $.ajax({
+      method: 'GET',
+      url: `/postOrder`
+    })
+  );
+};
+
 
 // export const borrowRequestOnBlockchain = (data) => dispatch => (
 //   postBorrowRequest(data)
