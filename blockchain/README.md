@@ -1,4 +1,4 @@
-# PharmaChain, Medical Logistics Verified
+# PharmaChain. Medical Logistics Verified
 
 Pharma Chain makes relations between health-manufacturers and health-care-providers more streamlined using Blockchain and Machine Learning.
 
