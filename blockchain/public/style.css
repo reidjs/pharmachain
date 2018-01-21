@@ -86,4 +86,30 @@ input[type=number]:focus {
   border: 1px solid rgba(81, 203, 238, 1);
 }
 
+ul#products {
+  margin: 0 auto;
+  width: 600px;
+}
+
+li.product-card {
+  padding: 10px 10px;
+  margin: 0 auto;
+  margin-bottom: 10px;
+}
+
+li.product-card:hover {
+  -webkit-box-shadow: 3px 3px 5px 6px #ccc;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+  -moz-box-shadow:    3px 3px 5px 6px #ccc;  /* Firefox 3.5 - 3.6 */
+  box-shadow:         3px 3px 5px 6px #ccc;
+}
+
+li.product-card > h1 {
+  display: inline-block;
+  border: 1px solid black;
+  font-size: 14px;
+  padding: 3px;
+}
+li.product-card > h2 {
+  padding: 4px;
+}
 

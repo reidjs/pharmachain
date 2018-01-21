@@ -18268,7 +18268,10 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 var _defaultState = {
-  products: [{ name: 'advil', amount: 5 }, { name: 'gloves', amount: 1 }]
+  products: {
+    'advil': { name: 'advil', amount: 5 },
+    'gloves': { name: 'gloves', amount: 1 }
+  }
 };
 
 var configureStore = function configureStore() {
@@ -18417,7 +18420,9 @@ var Pharmacy = function (_React$Component) {
 
     _this.state = { inventory: _this.props.inventory };
     _this.handleSubmit = _this.handleSubmit.bind(_this);
+    _this.updateValue = _this.updateValue.bind(_this);
     _this.user = _this.props.user;
+    // debugger
     return _this;
   }
 
@@ -18434,10 +18439,21 @@ var Pharmacy = function (_React$Component) {
       this.user = nextProps.user;
     }
   }, {
+    key: 'updateValue',
+    value: function updateValue(product, amount) {
+      console.log('update');
+      var newInventory = Object.assign({}, this.state.inventory);
+      newInventory[product].amount = amount;
+      console.log(newInventory);
+      this.setState({ inventory: newInventory });
+    }
+  }, {
     key: 'render',
     value: function render() {
-      var listItems = this.props.inventory.map(function (product) {
-        return _react2.default.createElement(_pharmacy_item2.default, { product: product });
+      var _this2 = this;
+
+      var listItems = this.props.invarray.map(function (product) {
+        return _react2.default.createElement(_pharmacy_item2.default, { product: product, buyAmount: _this2.state.inventory[product.name].amount, updateValue: _this2.updateValue });
       });
       return _react2.default.createElement(
         'div',
@@ -18447,10 +18463,19 @@ var Pharmacy = function (_React$Component) {
           null,
           'Inventory Management'
         ),
+        this.state.inventory['advil'].amount,
         _react2.default.createElement(
           'ul',
-          null,
+          { id: 'products' },
           listItems
+        ),
+        _react2.default.createElement(_RaisedButton2.default, { label: 'Confirm Order' }),
+        _react2.default.createElement(
+          'button',
+          { onClick: function onClick() {
+              _this2.updateValue('advil', 2);
+            } },
+          'button'
         )
       );
     }
@@ -18482,6 +18507,10 @@ var _pharmacy = __webpack_require__(242);
 
 var _pharmacy2 = _interopRequireDefault(_pharmacy);
 
+var _values = __webpack_require__(596);
+
+var _values2 = _interopRequireDefault(_values);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
@@ -18491,6 +18520,7 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
   //   ['gloves', 1],
   //   ['cots', 2]];
   var inventory = state.products;
+  var invarray = (0, _values2.default)(state.products);
   // const inventory = [
   //   {
   //     name: 'vaccine',
@@ -18503,7 +18533,8 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
   // ];
   return {
     user: user,
-    inventory: inventory
+    inventory: inventory,
+    invarray: invarray
   };
 };
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
@@ -50165,17 +50196,213 @@ var _react2 = _interopRequireDefault(_react);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var PharmacyItem = function PharmacyItem(_ref) {
-  var product = _ref.product;
+  var product = _ref.product,
+      buyAmount = _ref.buyAmount,
+      updateValue = _ref.updateValue;
 
   return _react2.default.createElement(
-    'li',
-    null,
-    'pharm item ',
-    product.name
+    "li",
+    { className: "product-card" },
+    _react2.default.createElement(
+      "h1",
+      null,
+      product.name
+    ),
+    _react2.default.createElement(
+      "h2",
+      null,
+      product.amount
+    ),
+    _react2.default.createElement("input", { type: "number", value: buyAmount, onChange: function onChange(e) {
+        updateValue(product.name, e.target.value);
+      } })
   );
 };
 
 exports.default = PharmacyItem;
+
+/***/ }),
+/* 591 */
+/***/ (function(module, exports) {
+
+/**
+ * A specialized version of `_.map` for arrays without support for iteratee
+ * shorthands.
+ *
+ * @private
+ * @param {Array} [array] The array to iterate over.
+ * @param {Function} iteratee The function invoked per iteration.
+ * @returns {Array} Returns the new mapped array.
+ */
+function arrayMap(array, iteratee) {
+  var index = -1,
+      length = array == null ? 0 : array.length,
+      result = Array(length);
+
+  while (++index < length) {
+    result[index] = iteratee(array[index], index, array);
+  }
+  return result;
+}
+
+module.exports = arrayMap;
+
+
+/***/ }),
+/* 592 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var isPrototype = __webpack_require__(180),
+    nativeKeys = __webpack_require__(594);
+
+/** Used for built-in method references. */
+var objectProto = Object.prototype;
+
+/** Used to check objects for own properties. */
+var hasOwnProperty = objectProto.hasOwnProperty;
+
+/**
+ * The base implementation of `_.keys` which doesn't treat sparse arrays as dense.
+ *
+ * @private
+ * @param {Object} object The object to query.
+ * @returns {Array} Returns the array of property names.
+ */
+function baseKeys(object) {
+  if (!isPrototype(object)) {
+    return nativeKeys(object);
+  }
+  var result = [];
+  for (var key in Object(object)) {
+    if (hasOwnProperty.call(object, key) && key != 'constructor') {
+      result.push(key);
+    }
+  }
+  return result;
+}
+
+module.exports = baseKeys;
+
+
+/***/ }),
+/* 593 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var arrayMap = __webpack_require__(591);
+
+/**
+ * The base implementation of `_.values` and `_.valuesIn` which creates an
+ * array of `object` property values corresponding to the property names
+ * of `props`.
+ *
+ * @private
+ * @param {Object} object The object to query.
+ * @param {Array} props The property names to get values for.
+ * @returns {Object} Returns the array of property values.
+ */
+function baseValues(object, props) {
+  return arrayMap(props, function(key) {
+    return object[key];
+  });
+}
+
+module.exports = baseValues;
+
+
+/***/ }),
+/* 594 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var overArg = __webpack_require__(399);
+
+/* Built-in method references for those with the same name as other `lodash` methods. */
+var nativeKeys = overArg(Object.keys, Object);
+
+module.exports = nativeKeys;
+
+
+/***/ }),
+/* 595 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var arrayLikeKeys = __webpack_require__(353),
+    baseKeys = __webpack_require__(592),
+    isArrayLike = __webpack_require__(112);
+
+/**
+ * Creates an array of the own enumerable property names of `object`.
+ *
+ * **Note:** Non-object values are coerced to objects. See the
+ * [ES spec](http://ecma-international.org/ecma-262/7.0/#sec-object.keys)
+ * for more details.
+ *
+ * @static
+ * @since 0.1.0
+ * @memberOf _
+ * @category Object
+ * @param {Object} object The object to query.
+ * @returns {Array} Returns the array of property names.
+ * @example
+ *
+ * function Foo() {
+ *   this.a = 1;
+ *   this.b = 2;
+ * }
+ *
+ * Foo.prototype.c = 3;
+ *
+ * _.keys(new Foo);
+ * // => ['a', 'b'] (iteration order is not guaranteed)
+ *
+ * _.keys('hi');
+ * // => ['0', '1']
+ */
+function keys(object) {
+  return isArrayLike(object) ? arrayLikeKeys(object) : baseKeys(object);
+}
+
+module.exports = keys;
+
+
+/***/ }),
+/* 596 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var baseValues = __webpack_require__(593),
+    keys = __webpack_require__(595);
+
+/**
+ * Creates an array of the own enumerable string keyed property values of `object`.
+ *
+ * **Note:** Non-object values are coerced to objects.
+ *
+ * @static
+ * @since 0.1.0
+ * @memberOf _
+ * @category Object
+ * @param {Object} object The object to query.
+ * @returns {Array} Returns the array of property values.
+ * @example
+ *
+ * function Foo() {
+ *   this.a = 1;
+ *   this.b = 2;
+ * }
+ *
+ * Foo.prototype.c = 3;
+ *
+ * _.values(new Foo);
+ * // => [1, 2] (iteration order is not guaranteed)
+ *
+ * _.values('hi');
+ * // => ['h', 'i']
+ */
+function values(object) {
+  return object == null ? [] : baseValues(object, keys(object));
+}
+
+module.exports = values;
+
 
 /***/ })
 /******/ ]);

@@ -10,10 +10,10 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 let _defaultState = {
-  products: [
-   {name: 'advil', amount: 5},
-   {name: 'gloves', amount: 1}
-  ]
+  products: {
+   'advil': {name: 'advil', amount: 5},
+   'gloves': {name: 'gloves', amount: 1}
+  }
 };
 
 
