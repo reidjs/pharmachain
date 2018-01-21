@@ -50813,33 +50813,29 @@ var ShipmentLog = function (_React$Component) {
   }
 
   _createClass(ShipmentLog, [{
-    key: 'componentWillMount',
+    key: "componentWillMount",
     value: function componentWillMount() {
-      setTimeout(this.props.toggleLoad, 1000);
+      setTimeout(this.props.toggleLoad, 2000);
     }
   }, {
-    key: 'componentWillReceiveProps',
+    key: "componentWillReceiveProps",
     value: function componentWillReceiveProps(newProps) {
       this.props = newProps;
     }
   }, {
-    key: 'render',
+    key: "render",
     value: function render() {
       var date = new Date();
       if (this.props.loading) {
-        return _react2.default.createElement(
-          'div',
-          null,
-          'spinner here'
-        );
+        return _react2.default.createElement("div", { className: "spinner" });
       } else {
         return _react2.default.createElement(
-          'div',
+          "div",
           null,
           date.toLocaleDateString(),
-          ', ',
+          ", ",
           date.toLocaleTimeString(),
-          ': Shipment Confirmed. Tracking Number: ',
+          ": Shipment Confirmed. Tracking Number: ",
           this.props.tracking
         );
       }

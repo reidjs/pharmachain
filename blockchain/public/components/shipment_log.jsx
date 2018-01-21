@@ -6,7 +6,7 @@ class ShipmentLog extends React.Component {
 
   }
   componentWillMount() {
-    setTimeout(this.props.toggleLoad, 1000);
+    setTimeout(this.props.toggleLoad, 2000);
   }
 
   componentWillReceiveProps(newProps) {
@@ -17,7 +17,7 @@ class ShipmentLog extends React.Component {
     let date = new Date();
     if (this.props.loading) {
       return (
-        <div>spinner here</div>
+        <div className="spinner"></div>
       );
     } else {
       return (
