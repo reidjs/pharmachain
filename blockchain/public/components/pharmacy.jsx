@@ -31,17 +31,18 @@ class Pharmacy extends React.Component {
     if (amount < 0) return 0;
     // let newInventory = Object.assign({}, this.state.inventory);
     let newInventory = merge({}, this.state.inventory);
-    newInventory[product].amount = amount;
+    // newInventory[product].amount = amount;
     // console.log(newInventory);
-    this.setState({total: this.state.total, inventory: newInventory});
-    this.calcSum();
+    newInventory[product].buyAmount = amount;
+    this.setState({total: this.state.total, inventory: newInventory},this.calcSum);
+    // this.calcSum();
   }
   calcSum() {
     let result = 0;
     for(var key in this.state.inventory) {
       if (!this.state.inventory.hasOwnProperty(key)) continue;
       // console.log(this.state.inventory[key]);
-      result += parseInt(this.state.inventory[key].amount);
+      result += parseInt(this.state.inventory[key].buyAmount);
     }
     // console.log(result);
     this.setState({total: parseInt(result)});
@@ -50,7 +51,7 @@ class Pharmacy extends React.Component {
   render() {
     const listItems = this.props.invarray.map((product) => {
       return (
-        <PharmacyItem product={product} buyAmount={this.state.inventory[product.name].amount} updateValue={this.updateValue} />
+        <PharmacyItem product={product} buyAmount={this.state.inventory[product.name].buyAmount} updateValue={this.updateValue} />
       );
     });
     return (

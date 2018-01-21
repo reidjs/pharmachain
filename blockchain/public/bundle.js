@@ -18282,10 +18282,10 @@ var _defaultState = {
   orderPlaced: false,
   shipmentConfirmed: false,
   products: {
-    'vaccine': { img: "../assets/syringe.svg", name: 'vaccine', amount: 5 },
-    'advil': { img: "../assets/pill.svg", name: 'advil', amount: 12 },
-    'cot': { img: "../assets/bed.svg", name: 'cot', amount: 1 },
-    'lipitor': { img: "../assets/pill.svg", name: 'lipitor', amount: 12 }
+    'vaccine': { img: "../assets/syringe.svg", name: 'vaccine', amount: 5, buyAmount: 0 },
+    'advil': { img: "../assets/pill.svg", name: 'advil', amount: 12, buyAmount: 0 },
+    'cot': { img: "../assets/bed.svg", name: 'cot', amount: 1, buyAmount: 0 },
+    'lipitor': { img: "../assets/pill.svg", name: 'lipitor', amount: 12, buyAmount: 0 }
   }
 };
 
@@ -18481,10 +18481,11 @@ var Pharmacy = function (_React$Component) {
       if (amount < 0) return 0;
       // let newInventory = Object.assign({}, this.state.inventory);
       var newInventory = (0, _merge2.default)({}, this.state.inventory);
-      newInventory[product].amount = amount;
+      // newInventory[product].amount = amount;
       // console.log(newInventory);
-      this.setState({ total: this.state.total, inventory: newInventory });
-      this.calcSum();
+      newInventory[product].buyAmount = amount;
+      this.setState({ total: this.state.total, inventory: newInventory }, this.calcSum);
+      // this.calcSum();
     }
   }, {
     key: 'calcSum',
@@ -18493,7 +18494,7 @@ var Pharmacy = function (_React$Component) {
       for (var key in this.state.inventory) {
         if (!this.state.inventory.hasOwnProperty(key)) continue;
         // console.log(this.state.inventory[key]);
-        result += parseInt(this.state.inventory[key].amount);
+        result += parseInt(this.state.inventory[key].buyAmount);
       }
       // console.log(result);
       this.setState({ total: parseInt(result) });
@@ -18505,7 +18506,7 @@ var Pharmacy = function (_React$Component) {
       var _this2 = this;
 
       var listItems = this.props.invarray.map(function (product) {
-        return _react2.default.createElement(_pharmacy_item2.default, { product: product, buyAmount: _this2.state.inventory[product.name].amount, updateValue: _this2.updateValue });
+        return _react2.default.createElement(_pharmacy_item2.default, { product: product, buyAmount: _this2.state.inventory[product.name].buyAmount, updateValue: _this2.updateValue });
       });
       return _react2.default.createElement(
         'div',
