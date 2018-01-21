@@ -13,10 +13,10 @@ let _defaultState = {
   orderPlaced: false,
   shipmentConfirmed: false,
   products: {
-   'vaccine': {img: "../assets/syringe.svg", name: 'vaccine', amount: 5, buyAmount: 3},
-   'advil': {img: "../assets/pill.svg", name: 'advil', amount: 12, buyAmount: 18},
-   'cot': {img: "../assets/bed.svg", name: 'cot', amount: 1, buyAmount: 1},
-   'lipitor': {img: "../assets/pill.svg", name: 'lipitor', amount: 12, buyAmount: 5},
+   'vaccine': {img: "../assets/syringe.svg", name: 'vaccine', amount: 5, buyAmount: 0},
+   'advil': {img: "../assets/pill.svg", name: 'advil', amount: 12, buyAmount: 0},
+   'cot': {img: "../assets/bed.svg", name: 'cot', amount: 1, buyAmount: 0},
+   'lipitor': {img: "../assets/pill.svg", name: 'lipitor', amount: 12, buyAmount: 0},
   }
 };
 

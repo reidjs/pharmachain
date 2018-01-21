@@ -233,7 +233,7 @@ h2#total > span {
 }
 
 div.container > p {
-  padding: 20px;
+  padding: 20px;  
 }
 
 div.pharm-list {
@@ -241,6 +241,28 @@ div.pharm-list {
   width: 500px;
 }
 
+.inventory {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.drag-feature {
+  display: flex;
+  justify-content: space-around;
+}
+.drag-to-this-box {
+    height: 8em;
+    width: 8em;
+    background: #f7f7f7;
+    border-radius: 9px;
+    box-shadow: 2px 5px 6px #888;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+hidden {
+  display: none;
+}
 
 /* div.seller {
   margin-left: 112px;

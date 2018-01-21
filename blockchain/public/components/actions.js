@@ -1,6 +1,6 @@
 export const RECEIVE_SHIPMENT_CONFIRMATION = "RECEIVE_SHIPMENT_CONFIRMATION";
 export const RECEIVE_ORDER = "RECEIVE_ORDER";
-
+export const RECEIVE_PREDICTION = "RECEIVE_PREDICTION";
 //must do something to blockchain
 export const submitOrder = (order) => {
   // console.log('order')
@@ -35,6 +35,23 @@ export const confirmShipment = (shipment) => {
     } 
   };
 };
+
+export const getPrediction = () => {
+  let order = {
+    products: {
+      'vaccine': {img: "../assets/syringe.svg", name: 'vaccine', amount: 5, buyAmount: 3},
+      'advil': {img: "../assets/pill.svg", name: 'advil', amount: 12, buyAmount: 18},
+      'cot': {img: "../assets/bed.svg", name: 'cot', amount: 1, buyAmount: 1},
+      'lipitor': {img: "../assets/pill.svg", name: 'lipitor', amount: 12, buyAmount: 5},
+     }
+  };
+  return {
+    type: RECEIVE_PREDICTION, 
+    payload: {
+      order
+    }
+  }
+}
 
 
 

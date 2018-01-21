@@ -4,6 +4,7 @@ class InventoryAI extends React.Component {
   constructor(props) {
     super(props);
     this.restartCsvDrag = this.restartCsvDrag.bind(this);
+    this.drop_handler = this.drop_handler.bind(this);
     // this.mouseEnterWhileDragging = this.mouseEnterWhileDragging.bind(this);
   }
 
@@ -36,8 +37,16 @@ class InventoryAI extends React.Component {
      item.innerHTML = "<img src='../../assets/gear-loading.svg' width='30%''></img>"
      document.getElementsByClassName("drag-here")[0].classList.toggle('hidden');
      e.target.appendChild(item);
+     let func = this.props.prediction;
+     console.log(func)
+     setTimeout(function () { 
+       item.innerHTML = "<p>42 Items</p>"; 
+       func();
+      },1000);
+   }
 
-     setTimeout(function () { item.innerHTML = "<p>42 Items</p>"; },1000);
+   perform_ai() {
+     
    }
 
   render() {

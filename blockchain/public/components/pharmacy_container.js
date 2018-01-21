@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { submitOrder } from './actions';
+import { submitOrder, getPrediction } from './actions';
 import Pharmacy from './pharmacy';
 import values from 'lodash/values';
 
@@ -33,6 +33,7 @@ const mapStateToProps = (state, ownProps) => {
 };
 const mapDispatchToProps = dispatch => ({
   // getloans: (address) => dispatch(getLoans(address)),
+  predict: () => dispatch(getPrediction()),
   order: (payload) => dispatch(submitOrder(payload))
 });
 export default withRouter(connect(

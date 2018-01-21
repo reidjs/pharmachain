@@ -4640,7 +4640,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 var RECEIVE_SHIPMENT_CONFIRMATION = exports.RECEIVE_SHIPMENT_CONFIRMATION = "RECEIVE_SHIPMENT_CONFIRMATION";
 var RECEIVE_ORDER = exports.RECEIVE_ORDER = "RECEIVE_ORDER";
-
+var RECEIVE_PREDICTION = exports.RECEIVE_PREDICTION = "RECEIVE_PREDICTION";
 //must do something to blockchain
 var submitOrder = exports.submitOrder = function submitOrder(order) {
   // console.log('order')
@@ -4672,6 +4672,23 @@ var confirmShipment = exports.confirmShipment = function confirmShipment(shipmen
     type: RECEIVE_SHIPMENT_CONFIRMATION,
     payload: {
       shipment: shipment
+    }
+  };
+};
+
+var getPrediction = exports.getPrediction = function getPrediction() {
+  var order = {
+    products: {
+      'vaccine': { img: "../assets/syringe.svg", name: 'vaccine', amount: 5, buyAmount: 3 },
+      'advil': { img: "../assets/pill.svg", name: 'advil', amount: 12, buyAmount: 18 },
+      'cot': { img: "../assets/bed.svg", name: 'cot', amount: 1, buyAmount: 1 },
+      'lipitor': { img: "../assets/pill.svg", name: 'lipitor', amount: 12, buyAmount: 5 }
+    }
+  };
+  return {
+    type: RECEIVE_PREDICTION,
+    payload: {
+      order: order
     }
   };
 };
@@ -6626,6 +6643,9 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     // getloans: (address) => dispatch(getLoans(address)),
+    predict: function predict() {
+      return dispatch((0, _actions.getPrediction)());
+    },
     order: function order(payload) {
       return dispatch((0, _actions.submitOrder)(payload));
     }
@@ -18529,10 +18549,10 @@ var _defaultState = {
   orderPlaced: false,
   shipmentConfirmed: false,
   products: {
-    'vaccine': { img: "../assets/syringe.svg", name: 'vaccine', amount: 5, buyAmount: 3 },
-    'advil': { img: "../assets/pill.svg", name: 'advil', amount: 12, buyAmount: 18 },
-    'cot': { img: "../assets/bed.svg", name: 'cot', amount: 1, buyAmount: 1 },
-    'lipitor': { img: "../assets/pill.svg", name: 'lipitor', amount: 12, buyAmount: 5 }
+    'vaccine': { img: "../assets/syringe.svg", name: 'vaccine', amount: 5, buyAmount: 0 },
+    'advil': { img: "../assets/pill.svg", name: 'advil', amount: 12, buyAmount: 0 },
+    'cot': { img: "../assets/bed.svg", name: 'cot', amount: 1, buyAmount: 0 },
+    'lipitor': { img: "../assets/pill.svg", name: 'lipitor', amount: 12, buyAmount: 0 }
   }
 };
 
@@ -18664,42 +18684,33 @@ var Buyer = function (_React$Component) {
     value: function render() {
       return _react2.default.createElement(
         'div',
-        null,
+        { className: 'container' },
         _react2.default.createElement(
           'h1',
           null,
           'Inventory Management'
         ),
         _react2.default.createElement(
-          'div',
-          { className: 'container' },
+          'ul',
+          { className: 'labels' },
           _react2.default.createElement(
-            'h1',
+            'li',
             null,
-            'Inventory Management'
+            'Product'
           ),
           _react2.default.createElement(
-            'ul',
-            { className: 'labels' },
-            _react2.default.createElement(
-              'li',
-              null,
-              'Product'
-            ),
-            _react2.default.createElement(
-              'li',
-              null,
-              'Inventory'
-            ),
-            _react2.default.createElement(
-              'li',
-              null,
-              'Order'
-            )
+            'li',
+            null,
+            'Inventory'
           ),
-          _react2.default.createElement(_pharmacy_container2.default, null),
-          _react2.default.createElement(_inventory2.default, null)
-        )
+          _react2.default.createElement(
+            'li',
+            null,
+            'Order'
+          )
+        ),
+        _react2.default.createElement(_pharmacy_container2.default, null),
+        _react2.default.createElement(_inventory2.default, { prediction: this.props.prediction })
       );
     }
   }]);
@@ -18745,6 +18756,9 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     // getloans: (address) => dispatch(getLoans(address)),
+    prediction: function prediction() {
+      return dispatch((0, _actions.getPrediction)());
+    },
     order: function order(payload) {
       return dispatch((0, _actions.submitOrder)(payload));
     }
@@ -18858,11 +18872,19 @@ var Pharmacy = function (_React$Component) {
     key: 'componentWillReceiveProps',
     value: function componentWillReceiveProps(nextProps) {
       this.user = nextProps.user;
+      this.calcSum();
+
+      // console.log("next", nextProps.inventory);
     }
   }, {
     key: 'componentWillMount',
     value: function componentWillMount() {
       this.calcSum();
+    }
+  }, {
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      // this.props.predict();
     }
   }, {
     key: 'updateValue',
@@ -19017,7 +19039,7 @@ var reducer = function reducer() {
       newState.shipmentConfirmed = true;
       return newState;
     case _actions.RECEIVE_ORDER:
-      console.log(action.payload.order);
+      // console.log("Order: ", action.payload.order);
       //every action.payload.order key buyamount needs to be updated in state
       for (var key in action.payload.order) {
         if (!action.payload.order.hasOwnProperty(key)) continue;
@@ -19026,6 +19048,15 @@ var reducer = function reducer() {
       }
       // debugger
       newState.orderPlaced = true;
+      return newState;
+    case _actions.RECEIVE_PREDICTION:
+      // console.log("Prediction: ", action.payload.order);
+      for (var key in action.payload.order.products) {
+        // console.log(key);
+        if (!action.payload.order.products.hasOwnProperty(key)) continue;
+        if (!newState.products.hasOwnProperty(key)) continue;
+        newState.products[key].buyAmount = parseInt(action.payload.order.products[key].buyAmount);
+      }
       return newState;
     default:
       return state;
@@ -50956,6 +50987,7 @@ var InventoryAI = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (InventoryAI.__proto__ || Object.getPrototypeOf(InventoryAI)).call(this, props));
 
     _this.restartCsvDrag = _this.restartCsvDrag.bind(_this);
+    _this.drop_handler = _this.drop_handler.bind(_this);
     // this.mouseEnterWhileDragging = this.mouseEnterWhileDragging.bind(this);
     return _this;
   }
@@ -50994,11 +51026,16 @@ var InventoryAI = function (_React$Component) {
       item.innerHTML = "<img src='../../assets/gear-loading.svg' width='30%''></img>";
       document.getElementsByClassName("drag-here")[0].classList.toggle('hidden');
       e.target.appendChild(item);
-
+      var func = this.props.prediction;
+      console.log(func);
       setTimeout(function () {
         item.innerHTML = "<p>42 Items</p>";
+        func();
       }, 1000);
     }
+  }, {
+    key: "perform_ai",
+    value: function perform_ai() {}
   }, {
     key: "render",
     value: function render() {

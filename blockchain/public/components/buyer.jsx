@@ -12,9 +12,6 @@ class Buyer extends React.Component {
   render() {
     return (
 
-      <div>
-        <h1>Inventory Management</h1>
-
       <div className="container">
         <h1>Inventory Management</h1>
         <ul className="labels">
@@ -24,9 +21,8 @@ class Buyer extends React.Component {
         </ul>
 
         <PharmacyContainer />
-        <InventoryAI/>
+        <InventoryAI prediction={this.props.prediction}/>
       </div>
-    </div>
     );
   }
 }

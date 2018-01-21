@@ -23,9 +23,15 @@ class Pharmacy extends React.Component {
   }
   componentWillReceiveProps(nextProps) {
     this.user = nextProps.user;
+    this.calcSum();
+
+    // console.log("next", nextProps.inventory);
   }
   componentWillMount() {
     this.calcSum();
+  }
+  componentDidMount() {
+    // this.props.predict();
   }
 
   updateValue(product, amount) {
