@@ -11761,6 +11761,10 @@ var RECEIVE_ORDER = exports.RECEIVE_ORDER = "RECEIVE_ORDER";
 //must do something to blockchain
 var submitOrder = exports.submitOrder = function submitOrder(order) {
   // console.log('order')
+  $.ajax({
+    method: 'GET',
+    url: "/postOrder"
+  });
   return {
     type: RECEIVE_ORDER,
     payload: {
@@ -11787,6 +11791,14 @@ var confirmShipment = exports.confirmShipment = function confirmShipment(shipmen
 //     })
 //   );
 // };
+
+//realistically this should be a post request
+var submitOrderToBlockchain = function submitOrderToBlockchain(order) {
+  return $.ajax({
+    method: 'GET',
+    url: "/postOrder"
+  });
+};
 
 // export const borrowRequestOnBlockchain = (data) => dispatch => (
 //   postBorrowRequest(data)

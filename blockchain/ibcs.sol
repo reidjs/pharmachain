@@ -88,4 +88,8 @@ contract Ibcs {
     loans[id].repayTimestamp = repayTimestamp;
     balance[borrower] = balance[borrower] + loans[id].amount;
   }
+
+  function postOrder(address sender, uint id) {
+
+  }
 }
