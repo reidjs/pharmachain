@@ -6,9 +6,10 @@ class Pharmacy extends React.Component {
   constructor(props) {
     super(props);
     
-    this.state = ({inventory: this.props.inventory});
     this.handleSubmit = this.handleSubmit.bind(this);
     this.updateValue = this.updateValue.bind(this);
+    this.calcSum = this.calcSum.bind(this);
+    this.state = ({total: 0, inventory: this.props.inventory});
     this.user = this.props.user;
     // debugger
   }
@@ -20,13 +21,29 @@ class Pharmacy extends React.Component {
   componentWillReceiveProps(nextProps) {
     this.user = nextProps.user; 
   }
+  componentWillMount() {
+    this.calcSum();
+  }
 
   updateValue(product, amount) {
-    console.log('update');
+    // console.log('update');
+    if (amount < 0) return 0;
     let newInventory = Object.assign({}, this.state.inventory);
     newInventory[product].amount = amount;
-    console.log(newInventory);
-    this.setState({inventory: newInventory});
+    // console.log(newInventory);
+    this.setState({total: this.state.total, inventory: newInventory});
+    this.calcSum();
+  }
+  calcSum() {
+    let result = 0;
+    for(var key in this.state.inventory) {
+      if (!this.state.inventory.hasOwnProperty(key)) continue;
+      // console.log(this.state.inventory[key]);
+      result += parseInt(this.state.inventory[key].amount);
+    }
+    // console.log(result);
+    this.setState({total: parseInt(result)});
+    // return result;
   }
   render() {
     const listItems = this.props.invarray.map((product) => {
@@ -37,12 +54,12 @@ class Pharmacy extends React.Component {
     return (
       <div>
         <h1>Inventory Management</h1>
-        {this.state.inventory['advil'].amount}
+        total {this.state.total}
         <ul id="products">
           {listItems}
         </ul>
         <RaisedButton label="Confirm Order"/>
-        <button onClick={()=>{this.updateValue('advil', 2)}}>button</button>
+        <button onClick={this.calcSum}>button</button>
       </div>
     );
   }

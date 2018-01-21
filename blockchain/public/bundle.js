@@ -18418,9 +18418,10 @@ var Pharmacy = function (_React$Component) {
 
     var _this = _possibleConstructorReturn(this, (Pharmacy.__proto__ || Object.getPrototypeOf(Pharmacy)).call(this, props));
 
-    _this.state = { inventory: _this.props.inventory };
     _this.handleSubmit = _this.handleSubmit.bind(_this);
     _this.updateValue = _this.updateValue.bind(_this);
+    _this.calcSum = _this.calcSum.bind(_this);
+    _this.state = { total: 0, inventory: _this.props.inventory };
     _this.user = _this.props.user;
     // debugger
     return _this;
@@ -18439,13 +18440,33 @@ var Pharmacy = function (_React$Component) {
       this.user = nextProps.user;
     }
   }, {
+    key: 'componentWillMount',
+    value: function componentWillMount() {
+      this.calcSum();
+    }
+  }, {
     key: 'updateValue',
     value: function updateValue(product, amount) {
-      console.log('update');
+      // console.log('update');
+      if (amount < 0) return 0;
       var newInventory = Object.assign({}, this.state.inventory);
       newInventory[product].amount = amount;
-      console.log(newInventory);
-      this.setState({ inventory: newInventory });
+      // console.log(newInventory);
+      this.setState({ total: this.state.total, inventory: newInventory });
+      this.calcSum();
+    }
+  }, {
+    key: 'calcSum',
+    value: function calcSum() {
+      var result = 0;
+      for (var key in this.state.inventory) {
+        if (!this.state.inventory.hasOwnProperty(key)) continue;
+        // console.log(this.state.inventory[key]);
+        result += parseInt(this.state.inventory[key].amount);
+      }
+      // console.log(result);
+      this.setState({ total: parseInt(result) });
+      // return result;
     }
   }, {
     key: 'render',
@@ -18463,7 +18484,8 @@ var Pharmacy = function (_React$Component) {
           null,
           'Inventory Management'
         ),
-        this.state.inventory['advil'].amount,
+        'total ',
+        this.state.total,
         _react2.default.createElement(
           'ul',
           { id: 'products' },
@@ -18472,9 +18494,7 @@ var Pharmacy = function (_React$Component) {
         _react2.default.createElement(_RaisedButton2.default, { label: 'Confirm Order' }),
         _react2.default.createElement(
           'button',
-          { onClick: function onClick() {
-              _this2.updateValue('advil', 2);
-            } },
+          { onClick: this.calcSum },
           'button'
         )
       );
